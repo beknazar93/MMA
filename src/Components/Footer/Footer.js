@@ -4,31 +4,35 @@ import tel from '../Footer/img/tel.png';
 import email from '../Footer/img/email.png';
 
 
+
 function Footer() {
     return (
-        <div className='footer'>
+        <section className='footer'>
             <div className="container">
                 <h1 className='footer__title'>Наши контакты</h1>
                 <p className='footer__text'>Адрес,Телефон и Электронная почта</p>
+
                 <div className="footer__contact">
-                    <div className="footer__contact_adres">
-                        <img className='footer__adres_photo' src={adres} />
-                        <h1 className='footer__adres_title'>Адрес</h1>
-                        <p className='footer__adres_text'>Гр: ОШ, Ул: Масалиева 44, -1 этаж</p>
+
+                    <div className="footer__contact-adres">
+                        <img className='footer__contact-adres-photo' src={adres} />
+                        <h1 className='footer__contact-adres-title'>Адрес</h1>
+                        <a href="https://maps.app.goo.gl/Hkx3vfkwX56xYpey9" target="_blank" className='footer__contact-adres-text'>Гр: ОШ, Ул: Масалиева 44, -1 этаж</a>
                     </div>
-                    <div className="footer__contact_tel">
-                        <img className='footer__tel_photo' src={tel} />
-                        <h1 className='footer__tel_title'>Телефон</h1>
-                        <p className='footer__tel_text'>Телефон: +996 701 11 15 44</p>
+                    <div className="footer__contact-tel">
+                        <img className='footer__contact-tel-photo' src={tel} />
+                        <h1 className='footer__contact-adres-title'>Телефон</h1>
+                        <a href="https://wa.me/996999995776" target="_blank" className='footer__contact-tel-text'>Телефон: +996 999 99 57 76</a>
                     </div>
-                    <div className="footer__contact_email">
-                        <img className='footer__email_photo' src={email} />
-                        <h1 className='footer__email_title'>Эл Почта</h1>
-                        <p className='footer__email_text'>Почта: abytov247@gmail.com</p>
+                    <div className="footer__contact-email">
+                        <img className='footer__contact-email-photo' src={email} />
+                        <h1 className='footer__contact-adres-title'>Эл Почта</h1>
+                        <p className='footer__contact-email-text'>Почта: abytov247@gmail.com</p>
                     </div>
+
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 export default Footer

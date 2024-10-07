@@ -1,0 +1,441 @@
+// .manager {
+//   padding: 20px;
+//   background-color: #f9f9f9;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+//   &__income {
+//     background-color: #f9f9f9; /* Светлый фон для секции */
+//     border-radius: 8px; /* Закругленные углы */
+//     padding: 20px; /* Отступы */
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для добавления глубины */
+//     margin: 20px 0; /* Отступы сверху и снизу */
+//     cursor: pointer;
+    
+//     &-title {
+//       font-size: 24px; /* Размер заголовка */
+//       color: #333; /* Цвет текста */
+//       margin-bottom: 15px; /* Отступ снизу */
+//       text-align: center; /* Центрирование текста */
+//     }
+  
+//     &-list {
+//       list-style-type: none; /* Убираем маркеры списка */
+//       padding: 0; /* Убираем внутренние отступы */
+      
+//     }
+  
+//     &-item {
+//       display: flex; /* Гибкое отображение для выравнивания */
+//       justify-content: space-between; /* Распределение пространства */
+//       padding: 10px 15px; /* Отступы */
+//       border-bottom: 1px solid #e0e0e0; /* Легкая граница снизу */
+      
+      
+//       &:last-child {
+//         border-bottom: none; /* Убираем границу для последнего элемента */
+//       }
+//     }
+  
+//     &-trainer {
+//       font-weight: bold; /* Жирный шрифт для имени тренера */
+//       color: #555; /* Цвет для имени тренера */
+//     }
+  
+//     &-amount {
+//       color: #27ae60; /* Зеленый цвет для суммы */
+//       font-weight: 600; /* Увеличенный вес для суммы */
+//     }
+//   }
+  
+
+//   &__tabs {
+//     display: flex;
+//     justify-content: space-around;
+//     margin-bottom: 20px;
+
+//     & .manager__tab {
+//       flex: 1;
+//       padding: 10px;
+//       border: none;
+//       background-color: #007bff;
+//       color: white;
+//       border-radius: 4px;
+//       cursor: pointer;
+//       text-align: center;
+//       transition: background-color 0.3s;
+
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+
+//       &.active {
+//         background-color: #0056b3;
+//         font-weight: bold;
+//       }
+//     }
+//   }
+
+//   &__contents {
+//     border: 1px solid #ddd;
+//     border-radius: 8px;
+//     padding: 20px;
+//     background-color: white;
+
+//     & .manager__clients-list {
+//       margin-top: 20px;
+
+//       & .manager__filters {
+//         display: flex;
+//         flex-wrap: wrap;
+//         gap: 15px;
+//         margin-bottom: 20px;
+
+//         & .manager__filter,
+//         & .manager__select {
+//           padding: 10px;
+//           border-radius: 4px;
+//           border: 1px solid #ddd;
+//           font-size: 14px;
+//           width: 150px;
+//           transition: border-color 0.3s;
+
+//           &:focus {
+//             border-color: #007bff;
+//             outline: none;
+//           }
+//         }
+//       }
+
+//       & .manager__client-card {
+//         background-color: #f0f4ff;
+//         padding: 15px;
+//         border-radius: 8px;
+//         margin-bottom: 15px;
+//         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//         transition: transform 0.2s;
+//         cursor: pointer;
+
+//         &:hover {
+//           transform: translateY(-2px);
+//         }
+
+//         & .manager__client-name {
+//           font-size: 18px;
+//           font-weight: bold;
+//           color: #333;
+//         }
+
+//         & .manager__client-phone,
+//         & .manager__client-price,
+//         & .manager__client-sport,
+//         & .manager__client-trainer,
+//         & .manager__client-comment,
+//         & .manager__client-date {
+//           font-size: 14px;
+//           color: #555;
+//           margin: 5px 0;
+//         }
+
+//         & .manager__client-payment {
+//           font-size: 14px;
+//           margin: 5px 0;
+
+//           &--paid {
+//             color: #28a745; // green for paid
+//           }
+
+//           &--unpaid {
+//             color: #dc3545; // red for unpaid
+//           }
+//         }
+//       }
+//     }
+
+//     & .manager__add-client {
+//       margin-top: 20px;
+
+//       & .manager__input,
+//       & .manager__select,
+//       & .manager__textarea {
+//         width: 100%;
+//         padding: 10px;
+//         margin-bottom: 15px;
+//         border: 1px solid #ddd;
+//         border-radius: 4px;
+//         font-size: 14px;
+//         transition: border-color 0.3s;
+
+//         &:focus {
+//           border-color: #007bff;
+//           outline: none;
+//         }
+//       }
+
+//       & .manager__textarea {
+//         height: 100px;
+//         resize: none; // Prevent resizing
+//       }
+
+//       & .manager__add-button {
+//         padding: 10px 15px;
+//         background-color: #007bff;
+//         color: white;
+//         border: none;
+//         border-radius: 4px;
+//         cursor: pointer;
+//         transition: background-color 0.3s;
+
+//         &:hover {
+//           background-color: #0056b3;
+//         }
+//       }
+//     }
+//   }
+//   &__length {
+//     font-size: 20px; // Увеличиваем размер шрифта
+//     font-weight: bold; // Делаем текст жирным
+//     color: #333; // Цвет текста
+//     margin-bottom: 15px; // Отступ снизу для разделения с другими элементами
+//     border-bottom: 2px solid #007bff; // Подчеркиваем заголовок
+//     padding-bottom: 5px; // Отступ снизу для большей отделенности
+//     text-align: left; // Выравнивание текста влево
+
+//     // Дополнительные эффекты
+//     transition: color 0.3s; // Плавный переход цвета
+
+//     &:hover {
+//       color: #0056b3; // Цвет текста при наведении
+//     }
+//   }
+// }
+
+.manager {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &__income {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    cursor: pointer;
+
+    &-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    &-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px;
+      border-bottom: 1px solid #e0e0e0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &-trainer {
+      font-weight: bold;
+      color: #555;
+    }
+
+    &-amount {
+      color: #27ae60;
+      font-weight: 600;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    & .manager__tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &.active {
+        background-color: #0056b3;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__contents {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: white;
+
+    & .manager__clients-list {
+      margin-top: 20px;
+
+      & .manager__filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+
+        & .manager__filter,
+        & .manager__select {
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          font-size: 14px;
+          width: 150px;
+          transition: border-color 0.3s;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+      }
+
+      & .manager__client-card {
+        background-color: #f0f4ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        & .manager__client-name {
+          font-size: 18px;
+          font-weight: bold;
+          color: #333;
+        }
+
+        & .manager__client-phone,
+        & .manager__client-price,
+        & .manager__client-sport,
+        & .manager__client-trainer,
+        & .manager__client-comment,
+        & .manager__client-date {
+          font-size: 14px;
+          color: #555;
+          margin: 5px 0;
+        }
+
+        & .manager__client-payment {
+          font-size: 14px;
+          margin: 5px 0;
+
+          &--paid {
+            color: #28a745; // green for paid
+          }
+
+          &--unpaid {
+            color: #dc3545; // red for unpaid
+          }
+        }
+      }
+    }
+  }
+  &__add-client {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    &-input,
+    &-select,
+    &-textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
+
+    &-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    &-select {
+      appearance: none; // Убираем стандартный вид селекта
+      background-color: #fff;
+      padding-right: 30px; // Место для стрелки
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M7 10l5 5 5-5H7z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center; // Положение стрелки
+    }
+
+    &-button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  &__length {
+    font-size: 20px; // Увеличиваем размер шрифта
+    font-weight: bold; // Делаем текст жирным
+    color: #333; // Цвет текста
+    margin-bottom: 15px; // Отступ снизу для разделения с другими элементами
+    border-bottom: 2px solid #007bff; // Подчеркиваем заголовок
+    padding-bottom: 5px; // Отступ снизу для большей отделенности
+    text-align: left; // Выравнивание текста влево
+
+    // Дополнительные эффекты
+    transition: color 0.3s; // Плавный переход цвета
+
+    &:hover {
+      color: #0056b3; // Цвет текста при наведении
+    }
+  }
+}

@@ -1,19 +1,43 @@
-import React from 'react';
-import Photo from '../Header/img/mlogo.png';
- 
-
+import React, { useState } from "react";
+import Photo from "../Header/img/mlogo.png";
+import { Link } from "react-router-dom";
+import { CiMenuKebab } from "react-icons/ci";
 
 function Header() {
+  const [isOpen, setOpen] = useState();
   return (
-    <div className='header'>
+    <section className="header">
       <div className="container">
         <div className="header__nav">
-          <img className='header__logo' src={Photo} />
-          <p className='header__title'>Профессиональная MMA <br />школа в Оше </p>
-          <p className='header__info'>+996 701 11 15 44 <br />Город:&nbsp;Ош. &nbsp; ул: &nbsp;Масалиева 44. &nbsp;-1 этаж</p>
+          <img className="header__nav-logo" src={Photo} />
+          <nav className={`header__nav-menu ${isOpen ? "active" : ""}`}>
+            <ul className="header__nav-list">
+              <li>
+                <Link to="/" className="header__nav-list-subtitle">
+                  Главная
+                </Link>
+              </li>
+              <li>
+                <Link to="/Виды спорта" className="header__nav-list-subtitle">
+                  Виды спорта
+                </Link>
+              </li>
+              <li>
+                <Link to="/Новости" className="header__nav-list-subtitle">
+                  Наш зал
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <button
+            className="header__nav-button"
+            onClick={() => setOpen(!isOpen)}
+          >
+            <CiMenuKebab />
+          </button>
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
-export default Header
+export default Header;

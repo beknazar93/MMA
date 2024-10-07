@@ -1,21 +1,24 @@
 import React from 'react';
-import Home from '../Home/Home';
-import We from '../We/We';
-import Programs from '../Programs/Programs';
-import Price from '../Price/Price';
-import Benefit from '../Benefit/Benefit';
-import Companye from '../Companye/Companye';
+import Home from './Home/Home';
+import We from './We/We';
+import Programs from './Programs/Programs';
+import Benefit from './Benefit/Benefit';
+import Companye from './Companye/Companye';
+import Treners from './Treners/treners';
+import Follow from './Follow/Follow';
 
 function Main() {
   return (
-    <div className='Main'>
+    <section className='Main'>
       <Home />
       <We />
       <Programs />
-      <Price />
+      <Treners />
       <Benefit />
+      <Follow/>
+      <hr />
       <Companye />
-    </div>
+    </section>
   )
 }
 
