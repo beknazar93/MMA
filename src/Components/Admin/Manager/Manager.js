@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Manager = () => {
-  const SHEETDB_URL = 'https://beknazarosh.pythonanywhere.com/api/clients/?format=json'; // Замените на ваш URL
+  const SHEETDB_URL = 'https://beknazarosh.pythonanywhere.com/api/clients'; // Замените на ваш URL
   const [activeTab, setActiveTab] = useState('list');
   const [clients, setClients] = useState([]);
   const [newClient, setNewClient] = useState({
@@ -36,7 +36,7 @@ const Manager = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(SHEETDB_URL);
+        const response = await axios.get('https://beknazarosh.pythonanywhere.com/api/clients');
         setItems(response.data);
       } catch (error) {
         console.error('Ошибка при получении данных:', error);
@@ -48,7 +48,7 @@ const Manager = () => {
 
   const fetchClients = async () => {
     try {
-      const response = await axios.get(SHEETDB_URL);
+      const response = await axios.get('https://beknazarosh.pythonanywhere.com/api/clients');
       setClients(response.data);
     } catch (error) {
       console.error('Ошибка при получении клиентов:', error);
