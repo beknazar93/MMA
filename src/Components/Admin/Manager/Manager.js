@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Manager = () => {
-  const SHEETDB_URL = 'https://sheetdb.io/api/v1/71nw6r6077hnn'; // Замените на ваш URL
+  const SHEETDB_URL = 'https://beknazarosh.pythonanywhere.com/api/clients/?format=json'; // Замените на ваш URL
   const [activeTab, setActiveTab] = useState('list');
   const [clients, setClients] = useState([]);
   const [newClient, setNewClient] = useState({
