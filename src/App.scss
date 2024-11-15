@@ -24,9 +24,10 @@
 @import "./Components/Main/Cotegory/Mma/Mma.scss";
 @import "./Components/Main/Follow/Follow.scss";
 @import "./Components/Main/New/New.scss";
-@import './Components/Admin/Admin.scss';
-@import './Components/Admin/admin/Signup.scss';
+@import './Components/Admin/Enter.scss';
+@import './Components/Admin/Signup/Signup.scss';
 @import './Components/Admin/Manager/Manager.scss';
+@import './Components/Admin/AdminPanel/AdminPanel.scss';
 
 .treners__btn {
   border: none;
@@ -1485,3 +1486,4 @@
     width: 98%;
   }
 }
+

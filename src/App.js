@@ -12,9 +12,10 @@ import Sambo from "./Components/Main/Cotegory/Sambo/Sambo";
 import Judo from "./Components/Main/Cotegory/Judo/Judo";
 import Greco from "./Components/Main/Cotegory/Greco-roman/Greco";
 import New from "./Components/Main/New/New";
-import Admin from "./Components/Admin/Admin";
-import Signup from "./Components/Admin/admin/Signup";
+import Enter from "./Components/Admin/Enter";
+import Signup from "./Components/Admin/Signup/Signup";
 import Manager from "./Components/Admin/Manager/Manager";
+import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
 
 function App() {
   return (
@@ -24,9 +25,11 @@ function App() {
         <hr />
 
         <Routes>
-          <Route path="/Admin" element={<Admin />} />
+          <Route path="/Enter" element={<Enter />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Admin" element={<AdminPanel />} />
           <Route path="/Manager" element={<Manager />} />
+
 
           
           <Route path="/" element={<Main />} />
