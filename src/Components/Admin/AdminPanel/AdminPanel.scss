@@ -1,0 +1,251 @@
+// AdminPanel.scss
+.admin-panel {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  
+    &__sidebar {
+      width: 250px;
+      background-color: #1e88e5;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    &__logo {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: yellow;
+    }
+  
+    &__menu {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    &__menu-item {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      color: #fff;
+      background-color: transparent;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover,
+      &.active {
+        background-color: #1565c0;
+      }
+    }
+  
+    &__content {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+  }
+
+  .admin__client-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto; // Включаем прокрутку, если элементов слишком много
+    max-height: 80vh; // Ограничиваем максимальную высоту (по желанию)
+    box-sizing: border-box; // Чтобы padding и border не выходили за пределы блока
+  
+    // Отступы и стили для списка клиентов
+    .admin__client-card {
+      margin-bottom: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #fff;
+      box-sizing: border-box;
+  
+      // Стили для карт клиентов
+      .admin__client-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+  
+      // Заголовок имени клиента
+      .admin__client-name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      // Статус оплаты клиента
+      .admin__client-payment {
+        font-size: 14px;
+        color: #666;
+      }
+  
+      // Кнопки для редактирования и удаления
+      .admin__edit-button, .admin__delete-button {
+        margin-top: 10px;
+        padding: 8px 15px;
+        border: none;
+        background-color: #4c8bf5;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #357ab7;
+        }
+      }
+    }
+  
+    // Для списка клиентов
+    .admin__toggle-details-button {
+      padding: 6px 12px;
+      margin-top: 10px;
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+  
+  .admin__search-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+  
+    &:focus {
+      border-color: #4c8bf5;
+      background-color: #fff;
+    }
+  
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+  
+  
+  .admin__client-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+  
+    .admin__client-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+  
+    .admin__client-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .admin__client-payment {
+      font-size: 1em;
+      color: #007bff;
+      &.paid {
+        color: #28a745;
+      }
+      &.unpaid {
+        color: #dc3545;
+      }
+    }
+  
+    .admin__toggle-details-button {
+      margin-top: 15px;
+      background-color: #f0f0f0;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 15px;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  
+    .admin__client-details {
+      margin-top: 15px;
+      font-size: 0.95em;
+      color: #555;
+      p {
+        margin-bottom: 10px;
+      }
+      border-top: 1px solid #f0f0f0;
+      padding-top: 10px;
+    }
+  
+    .admin__edit-button,
+    .admin__delete-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 15px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &:first-of-type {
+        margin-right: 10px;
+      }
+    }
+  
+    .admin__edit-button {
+      background-color: #28a745;
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  
+    .admin__delete-button {
+      background-color: #dc3545;
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+  
+  
+  
+  

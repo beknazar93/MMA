@@ -1,389 +1,292 @@
 // .manager {
+//   background-color: #f8f9fa;
 //   padding: 20px;
-//   background-color: #f9f9f9;
 //   border-radius: 8px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-//   &__income {
-//     background-color: #f9f9f9; /* Светлый фон для секции */
-//     border-radius: 8px; /* Закругленные углы */
-//     padding: 20px; /* Отступы */
-//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для добавления глубины */
-//     margin: 20px 0; /* Отступы сверху и снизу */
-//     cursor: pointer;
-    
-//     &-title {
-//       font-size: 24px; /* Размер заголовка */
-//       color: #333; /* Цвет текста */
-//       margin-bottom: 15px; /* Отступ снизу */
-//       text-align: center; /* Центрирование текста */
-//     }
-  
-//     &-list {
-//       list-style-type: none; /* Убираем маркеры списка */
-//       padding: 0; /* Убираем внутренние отступы */
-      
-//     }
-  
-//     &-item {
-//       display: flex; /* Гибкое отображение для выравнивания */
-//       justify-content: space-between; /* Распределение пространства */
-//       padding: 10px 15px; /* Отступы */
-//       border-bottom: 1px solid #e0e0e0; /* Легкая граница снизу */
-      
-      
-//       &:last-child {
-//         border-bottom: none; /* Убираем границу для последнего элемента */
-//       }
-//     }
-  
-//     &-trainer {
-//       font-weight: bold; /* Жирный шрифт для имени тренера */
-//       color: #555; /* Цвет для имени тренера */
-//     }
-  
-//     &-amount {
-//       color: #27ae60; /* Зеленый цвет для суммы */
-//       font-weight: 600; /* Увеличенный вес для суммы */
-//     }
-//   }
-  
 
 //   &__tabs {
 //     display: flex;
-//     justify-content: space-around;
+//     gap: 10px;
 //     margin-bottom: 20px;
+//   }
 
-//     & .manager__tab {
-//       flex: 1;
-//       padding: 10px;
-//       border: none;
+//   &__tab {
+//     padding: 10px 15px;
+//     font-size: 14px;
+//     color: #333;
+//     background-color: #e9ecef;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+//     transition: background-color 0.3s;
+
+//     &:hover {
+//       background-color: #ced4da;
+//     }
+
+//     &--active {
 //       background-color: #007bff;
-//       color: white;
-//       border-radius: 4px;
-//       cursor: pointer;
-//       text-align: center;
-//       transition: background-color 0.3s;
-
-//       &:hover {
-//         background-color: #0056b3;
-//       }
-
-//       &.active {
-//         background-color: #0056b3;
-//         font-weight: bold;
-//       }
+//       color: #fff;
 //     }
 //   }
 
 //   &__contents {
-//     border: 1px solid #ddd;
+//     padding: 15px;
+//     border: 1px solid #dee2e6;
 //     border-radius: 8px;
-//     padding: 20px;
-//     background-color: white;
+//     background-color: #ffffff;
+//   }
 
-//     & .manager__clients-list {
-//       margin-top: 20px;
+//   &__filters {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 15px;
+//     margin-bottom: 20px;
 
-//       & .manager__filters {
-//         display: flex;
-//         flex-wrap: wrap;
-//         gap: 15px;
-//         margin-bottom: 20px;
+//     .manager__search-input,
+//     .manager__filter {
+//       padding: 8px 10px;
+//       font-size: 14px;
+//       border-radius: 4px;
+//       border: 1px solid #ced4da;
+//       transition: border-color 0.3s;
 
-//         & .manager__filter,
-//         & .manager__select {
-//           padding: 10px;
-//           border-radius: 4px;
-//           border: 1px solid #ddd;
-//           font-size: 14px;
-//           width: 150px;
-//           transition: border-color 0.3s;
-
-//           &:focus {
-//             border-color: #007bff;
-//             outline: none;
-//           }
-//         }
-//       }
-
-//       & .manager__client-card {
-//         background-color: #f0f4ff;
-//         padding: 15px;
-//         border-radius: 8px;
-//         margin-bottom: 15px;
-//         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//         transition: transform 0.2s;
-//         cursor: pointer;
-
-//         &:hover {
-//           transform: translateY(-2px);
-//         }
-
-//         & .manager__client-name {
-//           font-size: 18px;
-//           font-weight: bold;
-//           color: #333;
-//         }
-
-//         & .manager__client-phone,
-//         & .manager__client-price,
-//         & .manager__client-sport,
-//         & .manager__client-trainer,
-//         & .manager__client-comment,
-//         & .manager__client-date {
-//           font-size: 14px;
-//           color: #555;
-//           margin: 5px 0;
-//         }
-
-//         & .manager__client-payment {
-//           font-size: 14px;
-//           margin: 5px 0;
-
-//           &--paid {
-//             color: #28a745; // green for paid
-//           }
-
-//           &--unpaid {
-//             color: #dc3545; // red for unpaid
-//           }
-//         }
+//       &:focus {
+//         border-color: #007bff;
+//         outline: none;
 //       }
 //     }
 
-//     & .manager__add-client {
-//       margin-top: 20px;
-
-//       & .manager__input,
-//       & .manager__select,
-//       & .manager__textarea {
-//         width: 100%;
-//         padding: 10px;
-//         margin-bottom: 15px;
-//         border: 1px solid #ddd;
-//         border-radius: 4px;
-//         font-size: 14px;
-//         transition: border-color 0.3s;
-
-//         &:focus {
-//           border-color: #007bff;
-//           outline: none;
-//         }
-//       }
-
-//       & .manager__textarea {
-//         height: 100px;
-//         resize: none; // Prevent resizing
-//       }
-
-//       & .manager__add-button {
-//         padding: 10px 15px;
-//         background-color: #007bff;
-//         color: white;
-//         border: none;
-//         border-radius: 4px;
-//         cursor: pointer;
-//         transition: background-color 0.3s;
-
-//         &:hover {
-//           background-color: #0056b3;
-//         }
-//       }
+//     .manager__search-input {
+//       flex: 1;
 //     }
 //   }
-//   &__length {
-//     font-size: 20px; // Увеличиваем размер шрифта
-//     font-weight: bold; // Делаем текст жирным
-//     color: #333; // Цвет текста
-//     margin-bottom: 15px; // Отступ снизу для разделения с другими элементами
-//     border-bottom: 2px solid #007bff; // Подчеркиваем заголовок
-//     padding-bottom: 5px; // Отступ снизу для большей отделенности
-//     text-align: left; // Выравнивание текста влево
 
-//     // Дополнительные эффекты
-//     transition: color 0.3s; // Плавный переход цвета
+//   &__income {
+//     font-size: 16px;
+//     color: #495057;
+//     margin-bottom: 15px;
+//   }
 
+//   &__clients-list {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+//   }
+
+//   .manager__client-card {
+//     padding: 15px;
+//     margin-bottom: 15px;
+//     border: 1px solid #ddd;
+//     border-radius: 6px;
+//     background-color: #fafafa;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+//     transition: box-shadow 0.3s ease-in-out;
+  
 //     &:hover {
-//       color: #0056b3; // Цвет текста при наведении
+//       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Подсветка карточки при наведении */
 //     }
 //   }
+  
+//   .manager__client-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 15px;
+//   }
+  
+//   .manager__client-name {
+//     font-size: 1.2em;
+//     font-weight: bold;
+//   }
+  
+//   .manager__client-payment {
+//     font-size: 1em;
+//     font-weight: 600;
+//     padding: 5px 10px;
+//     border-radius: 4px;
+//     transition: background-color 0.3s, color 0.3s;
+  
+//     &.paid {
+//       background-color: #d4edda; /* Светлый зелёный фон */
+//       color: #155724; /* Тёмно-зелёный текст */
+//     }
+  
+//     &.unpaid {
+//       background-color: #f8d7da; /* Светлый красный фон */
+//       color: #721c24; /* Тёмно-красный текст */
+//     }
+//   }
+  
+//   .manager__toggle-details-button {
+//     padding: 8px 12px;
+//     background-color: #007bff;
+//     color: white;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+//     font-size: 0.9em;
+//     transition: background-color 0.3s;
+  
+//     &:hover {
+//       background-color: #0056b3;
+//     }
+//   }
+  
+//   .manager__client-details {
+//     margin-top: 10px;
+//   }
+  
+//   .manager__client-phone,
+//   .manager__client-price,
+//   .manager__client-sport-category,
+//   .manager__client-trainer,
+//   .manager__client-comment,
+//   .manager__client-date {
+//     margin-top: 8px;
+//     font-size: 1em;
+//   }
+  
+
+//   .manager__add-client {
+//     max-width: 500px; // Уменьшена ширина
+//     margin: 0 auto;
+//     padding: 15px; // Меньше padding
+//     border-radius: 6px;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Легкая тень
+//     background-color: #ffffff;
+//     background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+//   }
+  
+//   .manager__form-title {
+//     font-size: 1.3em; // Меньше размер шрифта
+//     margin-bottom: 15px; // Уменьшен отступ
+//     text-align: center;
+//     color: #333;
+//     font-family: 'Arial', sans-serif;
+//   }
+  
+//   .manager__fieldset {
+//     border: 1px solid #e0e0e0;
+//     padding: 12px; // Меньше padding
+//     margin-bottom: 15px;
+//     border-radius: 5px;
+//     background-color: #fafafa;
+//   }
+  
+//   .manager__fieldset legend {
+//     font-weight: 600;
+//     font-size: 1.1em; // Немного меньше шрифт
+//     color: #007BFF;
+//   }
+  
+//   .manager__field-group {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 12px; // Меньше промежутки
+//   }
+  
+//   .manager__field {
+//     flex: 1 1 calc(50% - 12px); // Уменьшены поля
+//   }
+  
+//   .manager__field--textarea {
+//     flex: 1 1 100%;
+//   }
+  
+//   .manager__input, .manager__textarea {
+//     width: 100%;
+//     padding: 8px; // Меньше отступы
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     margin-top: 6px; // Уменьшен отступ сверху
+//     font-size: 0.95em; // Меньше шрифт
+//     color: #555;
+//     background-color: #fff;
+//     transition: border-color 0.3s ease-in-out;
+//   }
+  
+//   .manager__input:focus, .manager__textarea:focus {
+//     border-color: #007BFF;
+//     outline: none;
+//   }
+  
+//   .manager__button {
+//     display: block;
+//     width: 100%;
+//     padding: 8px; // Меньше padding
+//     background-color: #007BFF;
+//     color: #fff;
+//     border: none;
+//     border-radius: 4px;
+//     font-size: 1em; // Меньше шрифт
+//     cursor: pointer;
+//     transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+//   }
+  
+//   .manager__button:hover {
+//     background-color: #0056b3;
+//     transform: translateY(-2px);
+//   }
+  
+//   .manager__button:active {
+//     transform: translateY(0);
+//   }
+  
+  
+  
 // }
 
 .manager {
+  background-color: #f8f9fa;
   padding: 20px;
-  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  &__income {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    cursor: pointer;
-
-    &-title {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    &-list {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    &-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 15px;
-      border-bottom: 1px solid #e0e0e0;
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-
-    &-trainer {
-      font-weight: bold;
-      color: #555;
-    }
-
-    &-amount {
-      color: #27ae60;
-      font-weight: 600;
-    }
-  }
 
   &__tabs {
     display: flex;
-    justify-content: space-around;
+    gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap; // Обеспечивает корректное поведение на мобильных устройствах
+  }
 
-    & .manager__tab {
-      flex: 1;
-      padding: 10px;
-      border: none;
+  &__tab {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #ced4da;
+    }
+
+    &--active {
       background-color: #007bff;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      text-align: center;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-
-      &.active {
-        background-color: #0056b3;
-        font-weight: bold;
-      }
+      color: #fff;
     }
   }
 
   &__contents {
-    border: 1px solid #ddd;
+    padding: 15px;
+    border: 1px solid #dee2e6;
     border-radius: 8px;
-    padding: 20px;
-    background-color: white;
-
-    & .manager__clients-list {
-      margin-top: 20px;
-
-      & .manager__filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin-bottom: 20px;
-
-        & .manager__filter,
-        & .manager__select {
-          padding: 10px;
-          border-radius: 4px;
-          border: 1px solid #ddd;
-          font-size: 14px;
-          width: 150px;
-          transition: border-color 0.3s;
-
-          &:focus {
-            border-color: #007bff;
-            outline: none;
-          }
-        }
-      }
-
-      & .manager__client-card {
-        background-color: #f0f4ff;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
-        cursor: pointer;
-
-        &:hover {
-          transform: translateY(-2px);
-        }
-
-        & .manager__client-name {
-          font-size: 18px;
-          font-weight: bold;
-          color: #333;
-        }
-
-        & .manager__client-phone,
-        & .manager__client-price,
-        & .manager__client-sport,
-        & .manager__client-trainer,
-        & .manager__client-comment,
-        & .manager__client-date {
-          font-size: 14px;
-          color: #555;
-          margin: 5px 0;
-        }
-
-        & .manager__client-payment {
-          font-size: 14px;
-          margin: 5px 0;
-
-          &--paid {
-            color: #28a745; // green for paid
-          }
-
-          &--unpaid {
-            color: #dc3545; // red for unpaid
-          }
-        }
-      }
-    }
+    background-color: #ffffff;
   }
-  &__add-client {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
-    &-title {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #333;
-    }
 
-    &-input,
-    &-select,
-    &-textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    .manager__search-input,
+    .manager__filter {
+      padding: 8px 10px;
+      font-size: 14px;
       border-radius: 4px;
-      font-size: 16px;
+      border: 1px solid #ced4da;
       transition: border-color 0.3s;
 
       &:focus {
@@ -392,50 +295,357 @@
       }
     }
 
-    &-textarea {
-      resize: vertical;
-      min-height: 100px;
+    .manager__search-input {
+      flex: 1;
     }
+  }
 
-    &-select {
-      appearance: none; // Убираем стандартный вид селекта
-      background-color: #fff;
-      padding-right: 30px; // Место для стрелки
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M7 10l5 5 5-5H7z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 10px center; // Положение стрелки
+  &__income {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 15px;
+  }
+
+  &__clients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .manager__client-card {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Подсветка карточки при наведении */
     }
+  }
+  
+  .manager__client-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .manager__client-name {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .manager__client-payment {
+    font-size: 1em;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  
+    &.paid {
+      background-color: #d4edda; /* Светлый зелёный фон */
+      color: #155724; /* Тёмно-зелёный текст */
+    }
+  
+    &.unpaid {
+      background-color: #f8d7da; /* Светлый красный фон */
+      color: #721c24; /* Тёмно-красный текст */
+    }
+  }
+  
+  .manager__toggle-details-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+  
+  .manager__client-details {
+    margin-top: 10px;
+  }
+  
+  .manager__client-phone,
+  .manager__client-price,
+  .manager__client-sport-category,
+  .manager__client-trainer,
+  .manager__client-comment,
+  .manager__client-date {
+    margin-top: 8px;
+    font-size: 1em;
+  }
+  
 
-    &-button {
-      padding: 10px 15px;
+  // .manager__add-client {
+  //   max-width: 500px; // Уменьшена ширина
+  //   margin: 0 auto;
+  //   padding: 15px; // Меньше padding
+  //   border-radius: 6px;
+  //   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Легкая тень
+  //   background-color: #ffffff;
+  //   background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  // }
+  
+  // .manager__form-title {
+  //   font-size: 1.3em; // Меньше размер шрифта
+  //   margin-bottom: 15px; // Уменьшен отступ
+  //   text-align: center;
+  //   color: #333;
+  //   font-family: 'Arial', sans-serif;
+  // }
+  
+  // .manager__fieldset {
+  //   border: 1px solid #e0e0e0;
+  //   padding: 12px; // Меньше padding
+  //   margin-bottom: 15px;
+  //   border-radius: 5px;
+  //   background-color: #fafafa;
+  // }
+  
+  // .manager__fieldset legend {
+  //   font-weight: 600;
+  //   font-size: 1.1em; // Немного меньше шрифт
+  //   color: #007BFF;
+  // }
+  
+  // .manager__field-group {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   gap: 12px; // Меньше промежутки
+  // }
+  
+  // .manager__field {
+  //   flex: 1 1 calc(50% - 12px); // Уменьшены поля
+  // }
+  
+  // .manager__field--textarea {
+  //   flex: 1 1 100%;
+  // }
+  
+  // .manager__input, .manager__textarea {
+  //   width: 100%;
+  //   padding: 8px; // Меньше отступы
+  //   border-radius: 4px;
+  //   border: 1px solid #ccc;
+  //   margin-top: 6px; // Уменьшен отступ сверху
+  //   font-size: 0.95em; // Меньше шрифт
+  //   color: #555;
+  //   background-color: #fff;
+  //   transition: border-color 0.3s ease-in-out;
+  // }
+  
+  // .manager__input:focus, .manager__textarea:focus {
+  //   border-color: #007BFF;
+  //   outline: none;
+  // }
+  
+  // .manager__button {
+  //   display: block;
+  //   width: 100%;
+  //   padding: 8px; // Меньше padding
+  //   background-color: #007BFF;
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 4px;
+  //   font-size: 1em; // Меньше шрифт
+  //   cursor: pointer;
+  //   transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+  // }
+  
+  // .manager__button:hover {
+  //   background-color: #0056b3;
+  //   transform: translateY(-2px);
+  // }
+  
+  // .manager__button:active {
+  //   transform: translateY(0);
+  // }
+
+  // // Адаптивные стили для различных разрешений экранов
+
+  // @media (max-width: 1024px) {
+  //   .manager__tabs {
+  //     flex-direction: column; // Переводим вкладки в вертикальное расположение
+  //   }
+
+  //   .manager__tab {
+  //     font-size: 12px; // Уменьшаем размер шрифта на планшетах
+  //     padding: 8px 12px;
+  //   }
+
+  //   .manager__add-client {
+  //     max-width: 100%;
+  //     padding: 10px; // Уменьшаем padding
+  //   }
+
+  //   .manager__form-title {
+  //     font-size: 1.1em; // Уменьшаем размер шрифта
+  //   }
+  // }
+
+  // @media (max-width: 768px) {
+  //   .manager__tabs {
+  //     gap: 8px;
+  //   }
+
+  //   .manager__add-client {
+  //     padding: 8px; // Меньше padding на мобильных
+  //   }
+
+  //   .manager__input,
+  //   .manager__textarea {
+  //     font-size: 0.9em; // Меньше шрифт
+  //   }
+
+  //   .manager__client-card {
+  //     padding: 12px; // Уменьшаем padding в карточке клиента
+  //   }
+  // }
+
+  // @media (max-width: 576px) {
+  //   .manager__tabs {
+  //     flex-direction: column;
+  //     gap: 5px;
+  //   }
+
+  //   .manager__tab {
+  //     font-size: 11px;
+  //     padding: 6px 10px;
+  //   }
+
+  //   .manager__client-name {
+  //     font-size: 1em;
+  //   }
+
+  //   .manager__add-client {
+  //     padding: 5px; // Меньше padding на самых маленьких экранах
+  //   }
+
+  //   .manager__form-title {
+  //     font-size: 1em; // Уменьшаем размер шрифта
+  //   }
+  // }
+
+  // @media (max-width: 480px) {
+  //   .manager__add-client {
+  //     padding: 4px;
+  //   }
+
+  //   .manager__input,
+  //   .manager__textarea {
+  //     font-size: 0.85em; // Еще меньше шрифт
+  //   }
+
+  //   .manager__button {
+  //     font-size: 0.9em;
+  //     padding: 6px;
+  //   }
+  // }
+  .manager__add-client {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  
+    h2 {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; // расстояние между колонками
+      margin-bottom: 20px;
+  
+      .form-group {
+        flex: 1 1 45%; // 45% ширины для каждого поля
+        min-width: 200px; // минимальная ширина
+      }
+  
+      label {
+        display: block;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+      }
+  
+      .manager__input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+      }
+    }
+  
+    .error {
+      color: red;
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+  
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: #fff;
       border: none;
       border-radius: 4px;
-      background-color: #007bff;
-      color: white;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s;
-
+      transition: background-color 0.3s ease;
+  
       &:hover {
         background-color: #0056b3;
       }
     }
   }
-
-  &__length {
-    font-size: 20px; // Увеличиваем размер шрифта
-    font-weight: bold; // Делаем текст жирным
-    color: #333; // Цвет текста
-    margin-bottom: 15px; // Отступ снизу для разделения с другими элементами
-    border-bottom: 2px solid #007bff; // Подчеркиваем заголовок
-    padding-bottom: 5px; // Отступ снизу для большей отделенности
-    text-align: left; // Выравнивание текста влево
-
-    // Дополнительные эффекты
-    transition: color 0.3s; // Плавный переход цвета
-
-    &:hover {
-      color: #0056b3; // Цвет текста при наведении
+  
+  @media (max-width: 768px) {
+    .manager__add-client {
+      padding: 15px;
+    }
+  
+    .form-row {
+      flex-direction: column; // на мобильных устройствах поля будут в одну колонку
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .manager__input {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    button {
+      padding: 10px;
     }
   }
+  
 }
