@@ -115,7 +115,7 @@ function Price({ }) {
                       <select className='price__form-body'>
                         <option >Выберите Цену</option>
                         <option >2500c</option>
-                        <option >1800c</option>
+                        <option >2200c</option>
                       </select>
                     </div>
                   </td>
