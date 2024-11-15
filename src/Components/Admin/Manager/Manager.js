@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const API_URL = 'https://beknazarosh.pythonanywhere.com/api/clients/';
+const API_URL = "https://beknazarosh.pythonanywhere.com/api/clients/";
 
 function ClientForm({ client, onSubmit }) {
   const [clientData, setClientData] = useState({
@@ -20,11 +20,12 @@ function ClientForm({ client, onSubmit }) {
   const [error, setError] = useState("");
   const [clients, setClients] = useState([]);
   // Состояние для поиска
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Загружаем список клиентов при монтировании компонента
   useEffect(() => {
-    axios.get(API_URL)
+    axios
+      .get(API_URL)
       .then((res) => setClients(res.data))
       .catch(() => setError("Ошибка при загрузке списка клиентов."));
   }, []);
@@ -62,7 +63,8 @@ function ClientForm({ client, onSubmit }) {
     }
   }, [client]);
 
-  const handleChange = (e) => setClientData({ ...clientData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setClientData({ ...clientData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,9 +79,10 @@ function ClientForm({ client, onSubmit }) {
       }
 
       // Обновляем список клиентов после успешного запроса
-      setClients((prev) => client
-        ? prev.map((c) => (c.id === client.id ? response.data : c))
-        : [...prev, response.data]
+      setClients((prev) =>
+        client
+          ? prev.map((c) => (c.id === client.id ? response.data : c))
+          : [...prev, response.data]
       );
 
       // Сбрасываем данные формы
@@ -104,25 +107,24 @@ function ClientForm({ client, onSubmit }) {
     }
   };
 
+  const [activeTab, setActiveTab] = useState("list");
 
-
-  const [activeTab, setActiveTab] = useState('list');
-
-  const [selectedSport, setSelectedSport] = useState('Все виды спорта');
-  const [selectedTrainer, setSelectedTrainer] = useState('Все тренеры');
-  const [selectedYear, setSelectedYear] = useState('Все годы');
-  const [selectedMonth, setSelectedMonth] = useState('Все месяцы');
-  const [selectedDay, setSelectedDay] = useState('Все дни');
+  const [selectedSport, setSelectedSport] = useState("Все виды спорта");
+  const [selectedTrainer, setSelectedTrainer] = useState("Все тренеры");
+  const [selectedYear, setSelectedYear] = useState("Все годы");
+  const [selectedMonth, setSelectedMonth] = useState("Все месяцы");
+  const [selectedDay, setSelectedDay] = useState("Все дни");
   const [totalIncome, setTotalIncome] = useState(0);
   const [filteredIncome, setFilteredIncome] = useState(0);
   const [unpaidIncome, setUnpaidIncome] = useState(0);
   const [PaidIncome, setPaidIncome] = useState(0);
 
-
   const filteredClients = clients.filter((client) => {
     return (
-      (selectedSport === "Все виды спорта" || client.sport_category === selectedSport) &&
-      (selectedTrainer === "Все тренеры" || client.trainer === selectedTrainer) &&
+      (selectedSport === "Все виды спорта" ||
+        client.sport_category === selectedSport) &&
+      (selectedTrainer === "Все тренеры" ||
+        client.trainer === selectedTrainer) &&
       (selectedYear === "Все годы" || client.year === selectedYear) &&
       (selectedMonth === "Все месяцы" || client.month === selectedMonth) &&
       (selectedDay === "Все дни" || client.day === Number(selectedDay)) &&
@@ -130,7 +132,13 @@ function ClientForm({ client, onSubmit }) {
     );
   });
 
-  const calculateIncome = (clientsList, day = "Все дни", month = "Все месяцы", year = "Все годы", trainer = "Все тренеры") => {
+  const calculateIncome = (
+    clientsList,
+    day = "Все дни",
+    month = "Все месяцы",
+    year = "Все годы",
+    trainer = "Все тренеры"
+  ) => {
     return clientsList.reduce((acc, client) => {
       const isDayMatch = day === "Все дни" || client.day === Number(day);
       const isMonthMatch = month === "Все месяцы" || client.month === month;
@@ -146,28 +154,49 @@ function ClientForm({ client, onSubmit }) {
 
   useEffect(() => {
     setTotalIncome(calculateIncome(clients));
-    setFilteredIncome(calculateIncome(filteredClients, selectedDay, selectedMonth, selectedYear));
-  }, [clients, filteredClients, selectedDay, selectedMonth, selectedYear, selectedTrainer]);
-
-
-
+    setFilteredIncome(
+      calculateIncome(filteredClients, selectedDay, selectedMonth, selectedYear)
+    );
+  }, [
+    clients,
+    filteredClients,
+    selectedDay,
+    selectedMonth,
+    selectedYear,
+    selectedTrainer,
+  ]);
 
   useEffect(() => {
     setTotalIncome(calculateIncome(clients)); // Общий доход
-    setFilteredIncome(calculateIncome(filteredClients, selectedDay, selectedMonth, selectedYear, selectedTrainer)); // Доход по фильтрам
+    setFilteredIncome(
+      calculateIncome(
+        filteredClients,
+        selectedDay,
+        selectedMonth,
+        selectedYear,
+        selectedTrainer
+      )
+    ); // Доход по фильтрам
 
     // Доход по фильтрам для неоплаченных клиентов
     setUnpaidIncome(
       filteredClients
-        .filter(client => client.payment === "неоплачено") // Фильтруем только по статусу "неоплачено"
+        .filter((client) => client.payment === "неоплачено") // Фильтруем только по статусу "неоплачено"
         .reduce((acc, client) => acc + (parseFloat(client.price) || 0), 0) // Суммируем доход по этим клиентам
     );
     setPaidIncome(
       filteredClients
-        .filter(client => client.payment === "оплачено") // Фильтруем только по статусу "неоплачено"
+        .filter((client) => client.payment === "оплачено") // Фильтруем только по статусу "неоплачено"
         .reduce((acc, client) => acc + (parseFloat(client.price) || 0), 0) // Суммируем доход по этим клиентам
     );
-  }, [clients, filteredClients, selectedDay, selectedMonth, selectedYear, selectedTrainer]);
+  }, [
+    clients,
+    filteredClients,
+    selectedDay,
+    selectedMonth,
+    selectedYear,
+    selectedTrainer,
+  ]);
 
   const [expandedClient, setExpandedClient] = useState(null); // Состояние для раскрытия информации
 
@@ -176,42 +205,25 @@ function ClientForm({ client, onSubmit }) {
     setExpandedClient(expandedClient === clientId ? null : clientId);
   };
 
-
-
-
   return (
-    <div className='manager'>
-
+    <div className="manager">
       <div className="manager__tabs">
-        <button
-          className="manager__tab"
-          onClick={() => setActiveTab('list')}
-        >
+        <button className="manager__tab" onClick={() => setActiveTab("list")}>
           Список клиентов
         </button>
-        <button
-          className="manager__tab"
-          onClick={() => setActiveTab('add')}
-        >
+        <button className="manager__tab" onClick={() => setActiveTab("add")}>
           Добавить клиента
         </button>
-        <button
-          className="manager__tab"
-          onClick={() => setActiveTab('paid')}
-        >
+        <button className="manager__tab" onClick={() => setActiveTab("paid")}>
           Оплаченные
         </button>
-        <button
-          className="manager__tab"
-          onClick={() => setActiveTab('unpaid')}
-        >
+        <button className="manager__tab" onClick={() => setActiveTab("unpaid")}>
           Неоплаченные
         </button>
       </div>
 
       <div className="manager__contents">
-
-        {activeTab === 'list' && (
+        {activeTab === "list" && (
           <div className="manager__clients-list">
             <div className="manager__filters">
               <input
@@ -227,9 +239,15 @@ function ClientForm({ client, onSubmit }) {
                 value={selectedSport}
                 onChange={(e) => setSelectedSport(e.target.value)}
               >
-                <option value="Все виды спорта">Все виды спорта</option>
+               <option value="Все виды спорта">Все виды спорта</option>
                 <option value="Бокс">Бокс</option>
                 <option value="ММА">ММА</option>
+                <option value="Sambo">Самбо</option>
+                <option value="Boryba">Борьба</option>
+                <option value="taekwondo">тхэквандо</option>
+                <option value="Judo">Дзюдо</option>
+                <option value="kickboxing">Кикбокс</option>
+                <option value="krossfit">Кроссфит</option>
               </select>
 
               <select
@@ -238,12 +256,20 @@ function ClientForm({ client, onSubmit }) {
                 onChange={(e) => setSelectedTrainer(e.target.value)}
               >
                 <option value="Все тренеры">Все тренеры</option>
-                <option value="Улан">Улан</option>
-                <option value="Мирлан">Мирлан</option>
-                <option value="Руслан">Руслан</option>
-                <option value="Тимур">Тимур</option>
-                <option value="Айбек">Айбек</option>
-
+                <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
+                <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
+                <option value="Сатаров Канат">Сатаров Канат</option>
+                <option value="Онарбоев Акжол">Онарбоев Акжол</option>
+                <option value="Абдуманаб уулу Илим">Абдуманаб уулу Илим</option>
+                <option value="Калмамат уулу Акай">Калмамат уулу Акай</option>
+                <option value="Маматжанов Марлен">Маматжанов Марлен</option>
+                <option value="Азизбек уулу Баяман">Азизбек уулу Баяман</option>
+                <option value="Тургунов Ислам">Тургунов Ислам</option>
+                <option value="Медербек уулу Саформурад">
+                  Медербек уулу Саформурад
+                </option>
+                <option value="Лукас Крабб">Лукас Крабб</option>
               </select>
 
               <select
@@ -284,7 +310,9 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все дни">Все дни</option>
                 {Array.from({ length: 31 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </option>
                 ))}
               </select>
             </div>
@@ -302,7 +330,9 @@ function ClientForm({ client, onSubmit }) {
 
                     {/* Статус оплаты с цветом, с анимацией для плавного изменения цвета */}
                     <p
-                      className={`manager__client-payment ${c.payment === 'оплачено' ? 'paid' : 'unpaid'}`}
+                      className={`manager__client-payment ${
+                        c.payment === "оплачено" ? "paid" : "unpaid"
+                      }`}
                     >
                       Оплата: {c.payment}
                     </p>
@@ -313,18 +343,30 @@ function ClientForm({ client, onSubmit }) {
                     onClick={() => handleToggleDetails(c.id)}
                     className="manager__toggle-details-button"
                   >
-                    {expandedClient === c.id ? 'Скрыть' : 'Показать подробности'}
+                    {expandedClient === c.id
+                      ? "Скрыть"
+                      : "Показать подробности"}
                   </button>
 
                   {/* Если клиент раскрыт, показываем всю информацию */}
                   {expandedClient === c.id && (
                     <div className="manager__client-details">
-                      <p className="manager__client-phone">Телефон: {c.phone}</p>
+                      <p className="manager__client-phone">
+                        Телефон: {c.phone}
+                      </p>
                       <p className="manager__client-price">Цена: {c.price}</p>
-                      <p className="manager__client-sport-category">Категория спорта: {c.sport_category}</p>
-                      <p className="manager__client-trainer">Тренер: {c.trainer}</p>
-                      <p className="manager__client-comment">Комментарий: {c.comment}</p>
-                      <p className="manager__client-date">Дата: {c.day} {c.month} {c.year}</p>
+                      <p className="manager__client-sport-category">
+                        Категория спорта: {c.sport_category}
+                      </p>
+                      <p className="manager__client-trainer">
+                        Тренер: {c.trainer}
+                      </p>
+                      <p className="manager__client-comment">
+                        Комментарий: {c.comment}
+                      </p>
+                      <p className="manager__client-date">
+                        Дата: {c.day} {c.month} {c.year}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -335,10 +377,13 @@ function ClientForm({ client, onSubmit }) {
           </div>
         )}
 
-        {activeTab === 'add' && (
-
+        {activeTab === "add" && (
           <form onSubmit={handleSubmit} className="manager__add-client">
-            <h2>{clientData.id ? "Редактировать клиента" : "Добавить нового клиента"}</h2>
+            <h2>
+              {clientData.id
+                ? "Редактировать клиента"
+                : "Добавить нового клиента"}
+            </h2>
             {error && <div className="error">{error}</div>}
             <div className="form-row">
               {[
@@ -355,7 +400,9 @@ function ClientForm({ client, onSubmit }) {
                 "comment",
               ].map((field) => (
                 <div key={field} className="form-group">
-                  <label>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+                  <label>
+                    {field.charAt(0).toUpperCase() + field.slice(1)}:
+                  </label>
                   {field === "payment" ? (
                     <select
                       name={field}
@@ -377,11 +424,28 @@ function ClientForm({ client, onSubmit }) {
                       required
                     >
                       <option value="Все тренеры">Все тренеры</option>
-                      <option value="Улан">Улан</option>
-                      <option value="Мирлан">Мирлан</option>
-                      <option value="Расул">Расул</option>
-                      <option value="Тимур">Тимур</option>
-                      <option value="Айбек">Айбек</option>
+                      <option value="Машрапов Тилек">Машрапов Тилек</option>
+                      <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
+                      <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
+                      <option value="Сатаров Канат">Сатаров Канат</option>
+                      <option value="Онарбоев Акжол">Онарбоев Акжол</option>
+                      <option value="Абдуманаб уулу Илим">
+                        Абдуманаб уулу Илим
+                      </option>
+                      <option value="Калмамат уулу Акай">
+                        Калмамат уулу Акай
+                      </option>
+                      <option value="Маматжанов Марлен">
+                        Маматжанов Марлен
+                      </option>
+                      <option value="Азизбек уулу Баяман">
+                        Азизбек уулу Баяман
+                      </option>
+                      <option value="Тургунов Ислам">Тургунов Ислам</option>
+                      <option value="Медербек уулу Саформурад">
+                        Медербек уулу Саформурад
+                      </option>
+                      <option value="Лукас Крабб">Лукас Крабб</option>
                     </select>
                   ) : field === "sport_category" ? (
                     <select
@@ -391,11 +455,15 @@ function ClientForm({ client, onSubmit }) {
                       className="manager__input"
                       required
                     >
-                      <option value="Все виды спорта">Все виды спорта</option>
-                      <option value="Бокс">Бокс</option>
-                      <option value="MMA">MMA</option>
-                      <option value="Sambo">Sambo</option>
-                      <option value="Boryba">Boryba</option>
+                     <option value="Все виды спорта">Все виды спорта</option>
+                <option value="Бокс">Бокс</option>
+                <option value="ММА">ММА</option>
+                <option value="Sambo">Самбо</option>
+                <option value="Boryba">Борьба</option>
+                <option value="taekwondo">тхэквандо</option>
+                <option value="Judo">Дзюдо</option>
+                <option value="kickboxing">Кикбокс</option>
+                <option value="krossfit">Кроссфит</option>
                     </select>
                   ) : field === "year" ? (
                     <select
@@ -406,11 +474,13 @@ function ClientForm({ client, onSubmit }) {
                       required
                     >
                       <option value="Все годы">Все годы</option>
-                      {Array.from({ length: 3 }, (_, i) => 2023 + i).map((year) => (
-                        <option key={year} value={year}>
-                          {year}
-                        </option>
-                      ))}
+                      {Array.from({ length: 3 }, (_, i) => 2023 + i).map(
+                        (year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        )
+                      )}
                     </select>
                   ) : field === "month" ? (
                     <select
@@ -462,14 +532,14 @@ function ClientForm({ client, onSubmit }) {
                 </div>
               ))}
             </div>
-            <button type="submit">{clientData.id ? "Обновить" : "Добавить"} клиента</button>
+            <button type="submit">
+              {clientData.id ? "Обновить" : "Добавить"} клиента
+            </button>
           </form>
-
         )}
 
-        {activeTab === 'paid' && (
+        {activeTab === "paid" && (
           <div className="manager__clients-list">
-
             <div className="manager__filters">
               <input
                 type="text"
@@ -487,8 +557,12 @@ function ClientForm({ client, onSubmit }) {
                 <option value="Все виды спорта">Все виды спорта</option>
                 <option value="Бокс">Бокс</option>
                 <option value="ММА">ММА</option>
-                <option value="Sambo">Sambo</option>
-                <option value="Boryba">Boryba</option>
+                <option value="Sambo">Самбо</option>
+                <option value="Boryba">Борьба</option>
+                <option value="taekwondo">тхэквандо</option>
+                <option value="Judo">Дзюдо</option>
+                <option value="kickboxing">Кикбокс</option>
+                <option value="krossfit">Кроссфит</option>
               </select>
 
               <select
@@ -497,11 +571,20 @@ function ClientForm({ client, onSubmit }) {
                 onChange={(e) => setSelectedTrainer(e.target.value)}
               >
                 <option value="Все тренеры">Все тренеры</option>
-                <option value="Улан">Улан</option>
-                <option value="Мирлан">Мирлан</option>
-                <option value="Руслан">Руслан</option>
-                <option value="Тимур">Тимур</option>
-                <option value="Айбек">Айбек</option>
+                <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
+                <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
+                <option value="Сатаров Канат">Сатаров Канат</option>
+                <option value="Онарбоев Акжол">Онарбоев Акжол</option>
+                <option value="Абдуманаб уулу Илим">Абдуманаб уулу Илим</option>
+                <option value="Калмамат уулу Акай">Калмамат уулу Акай</option>
+                <option value="Маматжанов Марлен">Маматжанов Марлен</option>
+                <option value="Азизбек уулу Баяман">Азизбек уулу Баяман</option>
+                <option value="Тургунов Ислам">Тургунов Ислам</option>
+                <option value="Медербек уулу Саформурад">
+                  Медербек уулу Саформурад
+                </option>
+                <option value="Лукас Крабб">Лукас Крабб</option>
               </select>
 
               <select
@@ -542,7 +625,9 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все дни">Все дни</option>
                 {Array.from({ length: 31 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </option>
                 ))}
               </select>
             </div>
@@ -554,7 +639,7 @@ function ClientForm({ client, onSubmit }) {
             {/* Фильтрация клиентов с оплаченной оплатой */}
             {filteredClients.length ? (
               filteredClients
-                .filter((c) => c.payment === 'оплачено') // Фильтрация по полю оплаты
+                .filter((c) => c.payment === "оплачено") // Фильтрация по полю оплаты
                 .map((c) => (
                   <div key={c.id} className="manager__client-card">
                     <div className="manager__client-header">
@@ -562,7 +647,9 @@ function ClientForm({ client, onSubmit }) {
 
                       {/* Статус оплаты с цветом, с анимацией для плавного изменения цвета */}
                       <p
-                        className={`manager__client-payment ${c.payment === 'оплачено' ? 'paid' : 'unpaid'}`}
+                        className={`manager__client-payment ${
+                          c.payment === "оплачено" ? "paid" : "unpaid"
+                        }`}
                       >
                         Оплата: {c.payment}
                       </p>
@@ -573,18 +660,30 @@ function ClientForm({ client, onSubmit }) {
                       onClick={() => handleToggleDetails(c.id)}
                       className="manager__toggle-details-button"
                     >
-                      {expandedClient === c.id ? 'Скрыть' : 'Показать подробности'}
+                      {expandedClient === c.id
+                        ? "Скрыть"
+                        : "Показать подробности"}
                     </button>
 
                     {/* Если клиент раскрыт, показываем всю информацию */}
                     {expandedClient === c.id && (
                       <div className="manager__client-details">
-                        <p className="manager__client-phone">Телефон: {c.phone}</p>
+                        <p className="manager__client-phone">
+                          Телефон: {c.phone}
+                        </p>
                         <p className="manager__client-price">Цена: {c.price}</p>
-                        <p className="manager__client-sport-category">Категория спорта: {c.sport_category}</p>
-                        <p className="manager__client-trainer">Тренер: {c.trainer}</p>
-                        <p className="manager__client-comment">Комментарий: {c.comment}</p>
-                        <p className="manager__client-date">Дата: {c.day} {c.month} {c.year}</p>
+                        <p className="manager__client-sport-category">
+                          Категория спорта: {c.sport_category}
+                        </p>
+                        <p className="manager__client-trainer">
+                          Тренер: {c.trainer}
+                        </p>
+                        <p className="manager__client-comment">
+                          Комментарий: {c.comment}
+                        </p>
+                        <p className="manager__client-date">
+                          Дата: {c.day} {c.month} {c.year}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -592,14 +691,11 @@ function ClientForm({ client, onSubmit }) {
             ) : (
               <li>Нет оплаченных клиентов для отображения.</li>
             )}
-
           </div>
         )}
 
-        {activeTab === 'unpaid' && (
-
+        {activeTab === "unpaid" && (
           <div className="manager__clients-list">
-
             <div className="manager__filters">
               <input
                 type="text"
@@ -617,8 +713,12 @@ function ClientForm({ client, onSubmit }) {
                 <option value="Все виды спорта">Все виды спорта</option>
                 <option value="Бокс">Бокс</option>
                 <option value="ММА">ММА</option>
-                <option value="Sambo">Sambo</option>
-                <option value="Boryba">Boryba</option>
+                <option value="Sambo">Самбо</option>
+                <option value="Boryba">Борьба</option>
+                <option value="taekwondo">тхэквандо</option>
+                <option value="Judo">Дзюдо</option>
+                <option value="kickboxing">Кикбокс</option>
+                <option value="krossfit">Кроссфит</option>
               </select>
 
               <select
@@ -627,12 +727,20 @@ function ClientForm({ client, onSubmit }) {
                 onChange={(e) => setSelectedTrainer(e.target.value)}
               >
                 <option value="Все тренеры">Все тренеры</option>
-                <option value="Улан">Улан</option>
-                <option value="Мирлан">Мирлан</option>
-                <option value="Руслан">Руслан</option>
-                <option value="Тимур">Тимур</option>
-                <option value="Айбек">Айбек</option>
-
+                <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
+                <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
+                <option value="Сатаров Канат">Сатаров Канат</option>
+                <option value="Онарбоев Акжол">Онарбоев Акжол</option>
+                <option value="Абдуманаб уулу Илим">Абдуманаб уулу Илим</option>
+                <option value="Калмамат уулу Акай">Калмамат уулу Акай</option>
+                <option value="Маматжанов Марлен">Маматжанов Марлен</option>
+                <option value="Азизбек уулу Баяман">Азизбек уулу Баяман</option>
+                <option value="Тургунов Ислам">Тургунов Ислам</option>
+                <option value="Медербек уулу Саформурад">
+                  Медербек уулу Саформурад
+                </option>
+                <option value="Лукас Крабб">Лукас Крабб</option>
               </select>
 
               <select
@@ -643,7 +751,7 @@ function ClientForm({ client, onSubmit }) {
                 <option value="Все годы">Все годы</option>
                 <option value="2023">2023</option>
                 <option value="2024">2024</option>
-                <option value="2022">2025</option>
+                <option value="2025">2025</option>
               </select>
 
               <select
@@ -673,7 +781,9 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все дни">Все дни</option>
                 {Array.from({ length: 31 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </option>
                 ))}
               </select>
             </div>
@@ -682,12 +792,10 @@ function ClientForm({ client, onSubmit }) {
               <p>Доход по фильтрам (неоплачено): {unpaidIncome}</p>
             </div>
 
-
-
             {/* Фильтрация клиентов с неоплаченной оплатой */}
             {filteredClients.length ? (
               filteredClients
-                .filter((c) => c.payment === 'неоплачено') // Фильтрация по полю оплаты
+                .filter((c) => c.payment === "неоплачено") // Фильтрация по полю оплаты
                 .map((c) => (
                   <div key={c.id} className="manager__client-card">
                     <div className="manager__client-header">
@@ -695,7 +803,9 @@ function ClientForm({ client, onSubmit }) {
 
                       {/* Статус оплаты с цветом, с анимацией для плавного изменения цвета */}
                       <p
-                        className={`manager__client-payment ${c.payment === 'оплачено' ? 'paid' : 'unpaid'}`}
+                        className={`manager__client-payment ${
+                          c.payment === "оплачено" ? "paid" : "unpaid"
+                        }`}
                       >
                         Оплата: {c.payment}
                       </p>
@@ -706,18 +816,30 @@ function ClientForm({ client, onSubmit }) {
                       onClick={() => handleToggleDetails(c.id)}
                       className="manager__toggle-details-button"
                     >
-                      {expandedClient === c.id ? 'Скрыть' : 'Показать подробности'}
+                      {expandedClient === c.id
+                        ? "Скрыть"
+                        : "Показать подробности"}
                     </button>
 
                     {/* Если клиент раскрыт, показываем всю информацию */}
                     {expandedClient === c.id && (
                       <div className="manager__client-details">
-                        <p className="manager__client-phone">Телефон: {c.phone}</p>
+                        <p className="manager__client-phone">
+                          Телефон: {c.phone}
+                        </p>
                         <p className="manager__client-price">Цена: {c.price}</p>
-                        <p className="manager__client-sport-category">Категория спорта: {c.sport_category}</p>
-                        <p className="manager__client-trainer">Тренер: {c.trainer}</p>
-                        <p className="manager__client-comment">Комментарий: {c.comment}</p>
-                        <p className="manager__client-date">Дата: {c.day} {c.month} {c.year}</p>
+                        <p className="manager__client-sport-category">
+                          Категория спорта: {c.sport_category}
+                        </p>
+                        <p className="manager__client-trainer">
+                          Тренер: {c.trainer}
+                        </p>
+                        <p className="manager__client-comment">
+                          Комментарий: {c.comment}
+                        </p>
+                        <p className="manager__client-date">
+                          Дата: {c.day} {c.month} {c.year}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -725,18 +847,11 @@ function ClientForm({ client, onSubmit }) {
             ) : (
               <li>Нет клиентов для отображения.</li>
             )}
-
-
           </div>
         )}
-
-
       </div>
-
     </div>
   );
 }
 
 export default ClientForm;
-
-
