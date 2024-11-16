@@ -25,14 +25,11 @@ function App() {
         <hr />
 
         <Routes>
+        <Route path="/" element={<Main />} />
           <Route path="/Enter" element={<Enter />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Admin" element={<AdminPanel />} />
-          <Route path="/Manager" element={<Manager />} />
-
-
-          
-          <Route path="/" element={<Main />} />
+          <Route path="/Admin/*" element={<AdminPanel />} />
+          <Route path="/manager" element={<Manager/>}/>
           <Route path="/Виды спорта" element={<Sports />} />
           <Route path="/Борьба" element={<Wrestling />} />
           <Route path="/ММА" element={<Mma />} />
