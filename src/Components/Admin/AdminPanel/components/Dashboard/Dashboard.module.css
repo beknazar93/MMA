@@ -1,0 +1,43 @@
+/* src/components/Dashboard/Dashboard.module.css */
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+}
+
+.widget {
+  background-color: #fff;
+  padding: 20px;
+  flex-grow: 1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.widget:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.widget:first-child {
+  background-color: #ffb74d;
+  color: white;
+}
+
+.widget:nth-child(2) {
+  background-color: #64b5f6;
+  color: white;
+}
+
+.widget:last-child {
+  background-color: #81c784;
+  color: white;
+}

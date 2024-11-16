@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './AdminPanel.scss';
+import { Routes, Route,  } from 'react-router-dom';
+import Sidebar from './components/Sidebar/Sidebar';
+import DashboardPage from './pages/DashboardPage';
+import ClientsPage from './pages/ClientsPage';
+import DealsPage from './pages/DealsPage';
+import TasksPage from './pages/TasksPage';
+import AnalyticsPage from './pages/AnalyticsPage';
+import SettingsPage from './pages/SettingsPage';
+import './styles/global.css';
+import { ClientsProvider } from './context/ClientsContext';
+import './AdminPanel.css'
+import { TasksProvider } from './context/TasksContext';
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -113,109 +125,24 @@ const AdminPanel = () => {
   );
 
   return (
-    <div className="admin-panel">
-      <aside className="admin-panel__sidebar">
-        <div className="admin-panel__logo">CRM система</div>
-        <nav className="admin-panel__menu">
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-            onClick={() => handleTabClick('dashboard')}
-          >
-            Dashboard
-          </button>
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'clients' ? 'active' : ''}`}
-            onClick={() => handleTabClick('clients')}
-          >
-            Клиенты
-          </button>
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'offers' ? 'active' : ''}`}
-            onClick={() => handleTabClick('offers')}
-          >
-            Специальные предложения
-          </button>
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'tasks' ? 'active' : ''}`}
-            onClick={() => handleTabClick('tasks')}
-          >
-            Задачи
-          </button>
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'analytics' ? 'active' : ''}`}
-            onClick={() => handleTabClick('analytics')}
-          >
-            Аналитика
-          </button>
-          <button
-            className={`admin-panel__menu-item ${activeTab === 'settings' ? 'active' : ''}`}
-            onClick={() => handleTabClick('settings')}
-          >
-            Настройки
-          </button>
-        </nav>
-      </aside>
-
-      <main className="admin-panel__content">
-        <h1>{activeTab}</h1>
-
-        {activeTab === 'clients' && (
-          <div className="admin__client-list">
-            {/* Поле для поиска */}
-            <input
-              type="text"
-              placeholder="Поиск по имени"
-              className="admin__search-input"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-
-            {filteredClients.length ? (
-              filteredClients.map((c) => (
-                <div key={c.id} className="admin__client-card">
-                  <div className="admin__client-header">
-                    <h3 className="admin__client-name">{c.name}</h3>
-                    <p
-                      className={`admin__client-payment ${c.payment === 'оплачено' ? 'paid' : 'unpaid'}`}
-                    >
-                      Оплата: {c.payment}
-                    </p>
-                  </div>
-
-                  <button
-                    onClick={() => handleToggleDetails(c.id)}
-                    className="admin__toggle-details-button"
-                  >
-                    {expandedClient === c.id ? 'Скрыть подробности' : 'Показать подробности'}
-                  </button>
-
-                  {expandedClient === c.id && (
-                    <div className="admin__client-details">
-                      <p className="admin__client-phone">Телефон: {c.phone}</p>
-                      <p className="admin__client-price">Цена: {c.price}</p>
-                      <p className="admin__client-sport-category">Категория спорта: {c.sport_category}</p>
-                      <p className="admin__client-trainer">Тренер: {c.trainer}</p>
-                      <p className="admin__client-comment">Комментарий: {c.comment}</p>
-                      <p className="admin__client-date">Дата: {c.day} {c.month} {c.year}</p>
-                    </div>
-                  )}
-
-                  <button onClick={() => handleEditClick(c)} className="admin__edit-button">
-                    Редактировать
-                  </button>
-                  <button onClick={() => handleDeleteClient(c.id)} className="admin__delete-button">
-                    Удалить
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>Нет клиентов для отображения.</p>
-            )}
-          </div>
-        )}
-      </main>
-    </div>
-  );
+    
+    <TasksProvider>
+  <ClientsProvider>
+      <div className="AdminPanel">
+        <Sidebar />
+         <Routes>
+            <Route path="admin" element={<DashboardPage />} />
+            <Route path="clients" element={<ClientsPage  />} />
+            <Route path="deals" element={<DealsPage/>} />
+            <Route path="tasks" element={<TasksPage />} />
+            <Route path="analytics" element={<AnalyticsPage />} />
+           <Route path="settings" element={<SettingsPage />} />
+          </Routes>
+      
+      </div>
+      </ClientsProvider>
+       </TasksProvider>
+  )
 };
 
 export default AdminPanel;

@@ -1,228 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
+import React from 'react'
 
-const API_URL = "https://beknazarosh.pythonanywhere.com/api/clients/";
 
-function ClientForm({ client, onSubmit }) {
-  const [clientData, setClientData] = useState({
-    name: "",
-    stage: "",
-    price: "",
-    phone: "",
-    payment: "",
-    sport_category: "",
-    trainer: "",
-    comment: "",
-    year: "",
-    month: "",
-    day: "",
-  });
-  const [error, setError] = useState("");
-  const [clients, setClients] = useState([]);
-  // Состояние для поиска
-  const [searchTerm, setSearchTerm] = useState("");
 
-  // Загружаем список клиентов при монтировании компонента
-  useEffect(() => {
-    axios
-      .get(API_URL)
-      .then((res) => setClients(res.data))
-      .catch(() => setError("Ошибка при загрузке списка клиентов."));
-  }, []);
-
-  // Устанавливаем данные клиента при их изменении
-  useEffect(() => {
-    if (client) {
-      setClientData({
-        name: client.name,
-        stage: client.stage,
-        price: client.price,
-        phone: client.phone,
-        payment: client.payment,
-        sport_category: client.sport_category,
-        trainer: client.trainer,
-        comment: client.comment,
-        year: client.year || "",
-        month: client.month || "",
-        day: client.day || "",
-      });
-    } else {
-      setClientData({
-        name: "",
-        stage: "",
-        price: "",
-        phone: "",
-        payment: "",
-        sport_category: "",
-        trainer: "",
-        comment: "",
-        year: "",
-        month: "",
-        day: "",
-      });
-    }
-  }, [client]);
-
-  const handleChange = (e) =>
-    setClientData({ ...clientData, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let response;
-      if (client) {
-        // Обновляем существующего клиента
-        response = await axios.put(`${API_URL}${client.id}/`, clientData);
-      } else {
-        // Добавляем нового клиента
-        response = await axios.post(API_URL, clientData);
-      }
-
-      // Обновляем список клиентов после успешного запроса
-      setClients((prev) =>
-        client
-          ? prev.map((c) => (c.id === client.id ? response.data : c))
-          : [...prev, response.data]
-      );
-
-      // Сбрасываем данные формы
-      setClientData({
-        name: "",
-        stage: "",
-        price: "",
-        phone: "",
-        payment: "",
-        sport_category: "",
-        trainer: "",
-        comment: "",
-        year: "",
-        month: "",
-        day: "",
-      });
-      setError("");
-      if (onSubmit) onSubmit(response.data); // Вызов onSubmit для внешних действий
-    } catch (err) {
-      console.error(err);
-      setError("Произошла ошибка при сохранении клиента.");
-    }
-  };
-
-  const [activeTab, setActiveTab] = useState("list");
-
-  const [selectedSport, setSelectedSport] = useState("Все виды спорта");
-  const [selectedTrainer, setSelectedTrainer] = useState("Все тренеры");
-  const [selectedYear, setSelectedYear] = useState("Все годы");
-  const [selectedMonth, setSelectedMonth] = useState("Все месяцы");
-  const [selectedDay, setSelectedDay] = useState("Все дни");
-  const [totalIncome, setTotalIncome] = useState(0);
-  const [filteredIncome, setFilteredIncome] = useState(0);
-  const [unpaidIncome, setUnpaidIncome] = useState(0);
-  const [PaidIncome, setPaidIncome] = useState(0);
-
-  const filteredClients = clients.filter((client) => {
-    return (
-      (selectedSport === "Все виды спорта" ||
-        client.sport_category === selectedSport) &&
-      (selectedTrainer === "Все тренеры" ||
-        client.trainer === selectedTrainer) &&
-      (selectedYear === "Все годы" || client.year === selectedYear) &&
-      (selectedMonth === "Все месяцы" || client.month === selectedMonth) &&
-      (selectedDay === "Все дни" || client.day === Number(selectedDay)) &&
-      client.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
-
-  const calculateIncome = (
-    clientsList,
-    day = "Все дни",
-    month = "Все месяцы",
-    year = "Все годы",
-    trainer = "Все тренеры"
-  ) => {
-    return clientsList.reduce((acc, client) => {
-      const isDayMatch = day === "Все дни" || client.day === Number(day);
-      const isMonthMatch = month === "Все месяцы" || client.month === month;
-      const isYearMatch = year === "Все годы" || client.year === year;
-      const isTrainer = year === "Все тренеры" || client.trainer === trainer;
-
-      if (isDayMatch && isMonthMatch && isYearMatch) {
-        return acc + (parseFloat(client.price) || 0);
-      }
-      return acc;
-    }, 0);
-  };
-
-  useEffect(() => {
-    setTotalIncome(calculateIncome(clients));
-    setFilteredIncome(
-      calculateIncome(filteredClients, selectedDay, selectedMonth, selectedYear)
-    );
-  }, [
-    clients,
-    filteredClients,
-    selectedDay,
-    selectedMonth,
-    selectedYear,
-    selectedTrainer,
-  ]);
-
-  useEffect(() => {
-    setTotalIncome(calculateIncome(clients)); // Общий доход
-    setFilteredIncome(
-      calculateIncome(
-        filteredClients,
-        selectedDay,
-        selectedMonth,
-        selectedYear,
-        selectedTrainer
-      )
-    ); // Доход по фильтрам
-
-    // Доход по фильтрам для неоплаченных клиентов
-    setUnpaidIncome(
-      filteredClients
-        .filter((client) => client.payment === "неоплачено") // Фильтруем только по статусу "неоплачено"
-        .reduce((acc, client) => acc + (parseFloat(client.price) || 0), 0) // Суммируем доход по этим клиентам
-    );
-    setPaidIncome(
-      filteredClients
-        .filter((client) => client.payment === "оплачено") // Фильтруем только по статусу "неоплачено"
-        .reduce((acc, client) => acc + (parseFloat(client.price) || 0), 0) // Суммируем доход по этим клиентам
-    );
-  }, [
-    clients,
-    filteredClients,
-    selectedDay,
-    selectedMonth,
-    selectedYear,
-    selectedTrainer,
-  ]);
-
-  const [expandedClient, setExpandedClient] = useState(null); // Состояние для раскрытия информации
-
-  const handleToggleDetails = (clientId) => {
-    // Переключение раскрытия подробностей
-    setExpandedClient(expandedClient === clientId ? null : clientId);
-  };
-
+function ActiveTab({selectedSport, setSelectedSport,activeTab, setActiveTab,searchTerm, setSearchTerm}) {
   return (
-    <div className="manager">
-      <div className="manager__tabs">
-        <button className="manager__tab" onClick={() => setActiveTab("list")}>
-          Список клиентов
-        </button>
-        <button className="manager__tab" onClick={() => setActiveTab("add")}>
-          Добавить клиента
-        </button>
-        <button className="manager__tab" onClick={() => setActiveTab("paid")}>
-          Оплаченные
-        </button>
-        <button className="manager__tab" onClick={() => setActiveTab("unpaid")}>
-          Неоплаченные
-        </button>
-      </div>
-
-      <div className="manager__contents">
+    <div>
         {activeTab === "list" && (
           <div className="manager__clients-list">
             <div className="manager__filters">
@@ -375,8 +158,8 @@ function ClientForm({ client, onSubmit }) {
               <li>Нет клиентов для отображения.</li>
             )}
           </div>
-        )}
-
+        )
+        }
         {activeTab === "add" && (
           <form onSubmit={handleSubmit} className="manager__add-client">
             <h2>
@@ -849,9 +632,9 @@ function ClientForm({ client, onSubmit }) {
             )}
           </div>
         )}
-      </div>
     </div>
-  );
+  )
 }
 
-export default ClientForm;
+export default ActiveTab
+

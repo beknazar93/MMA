@@ -1,0 +1,198 @@
+.AdminPanel{
+  display: flex;
+  gap: 20px;
+}
+.link{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+
+}
+.link:hover{
+  color: yellow;
+}
+.logo{
+  width: 50px;
+}
+.client-table{
+  margin: 10px auto;
+  border-collapse: collapse;
+  width: 70%;
+ 
+  
+}
+.clients-forms{
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.clients{
+  width: 100%;
+ margin-top: 50px; 
+}
+.clients-scrol{
+  max-height: 650px;
+  overflow: auto;
+}
+.table-idx{
+  width: 10px;
+  padding: 5px;
+}
+.table-name{
+  width: 200px;
+  padding-left: 10px;
+  height: 40px;
+}
+.table-data{
+  width: 140px;
+  padding: 5px;
+}
+.table-sport{
+  width: 80px;
+  text-align: center;
+}
+.table-trainer{
+  width:180px;
+  text-align: center;
+ 
+}
+.clients-form{
+  width: 400px;
+  height: 400px;
+  background-color: bisque;
+  margin-top: 10px;
+  padding: 10px;
+}
+.table-pay{
+  width: 130px;
+  text-align: center;
+}
+.table-contact{
+  width: 150px;
+  text-align: center;
+  height: 60px;
+  line-height: 20px;
+  padding: 5px;
+}
+.table-comment{
+  width: 150px;
+  text-align: center;
+}
+.table-btns{
+  text-align: center;
+}
+.clients-label{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  
+  margin: 10px auto;
+
+}
+.clients_text-area{
+  width: 165px;
+  resize: none;
+}
+.client-btns{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  
+}
+.clients-select{
+  width: 170px;
+}
+.kot{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.kot-analitic{
+  width: 100%;
+  display: flex;
+}
+
+/* styles.css */
+.deals-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.deals-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.deals-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.deals-form div {
+  margin-bottom: 15px;
+}
+
+.deals-form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.deals-form input,
+.deals-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+/* index.css или App.css */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --brightness: 100%;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  filter: brightness(var(--brightness));
+  transition: background-color 0.3s, color 0.3s, filter 0.3s;
+}
+
+.deals-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.deals-form input[type="date"] {
+  width: auto;
+}
+
+.deals-form input[type="number"] {
+  width: auto;
+}
+
+.deals-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.deals-form button:hover {
+  background-color: #45a049;
+}
+.text-area{
+  resize: none;
+}
