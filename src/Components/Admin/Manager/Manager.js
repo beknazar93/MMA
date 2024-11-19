@@ -244,6 +244,7 @@ function ClientForm({ client, onSubmit }) {
                 <option value="ММА">ММА</option>
                 <option value="Sambo">Самбо</option>
                 <option value="Boryba">Борьба</option>
+                <option value="греко римская борьба">греко римская борьба</option>
                 <option value="taekwondo">тхэквандо</option>
                 <option value="Judo">Дзюдо</option>
                 <option value="kickboxing">Кикбокс</option>
@@ -320,7 +321,7 @@ function ClientForm({ client, onSubmit }) {
 
             <div className="manager__income">
               <p>Общий доход: {totalIncome}</p>
-              <p>Доход по фильтрам: {filteredIncome}</p>
+              <p>Доход по фильтрам: {filteredIncome} - 60% зал итог {filteredIncome - 60%} </p>
             </div>
 
             {filteredClients.length ? (
