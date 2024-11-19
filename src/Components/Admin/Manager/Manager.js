@@ -257,6 +257,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
@@ -425,6 +426,7 @@ function ClientForm({ client, onSubmit }) {
                     >
                       <option value="Все тренеры">Все тренеры</option>
                       <option value="Машрапов Тилек">Машрапов Тилек</option>
+                    <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                       <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                       <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                       <option value="Сатаров Канат">Сатаров Канат</option>
@@ -572,6 +574,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
@@ -728,6 +731,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                  <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
