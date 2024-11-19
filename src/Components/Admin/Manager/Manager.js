@@ -324,7 +324,7 @@ function ClientForm({ client, onSubmit }) {
 
             <div className="manager__income">
               <p>Общий доход: {totalIncome}</p>
-              <p>Доход по фильтрам: {filteredIncome} Итог после вычитания 60%  </p>
+              <p>Доход по фильтрам: {filteredIncome} Итог после вычитания 60% {calculateIncomeAfterDeduction()}</p>
             </div>
 
             {filteredClients.length ? (
