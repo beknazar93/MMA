@@ -151,6 +151,9 @@ function ClientForm({ client, onSubmit }) {
       return acc;
     }, 0);
   };
+   const calculateIncomeAfterDeduction = () => {
+    return filteredIncome * 0.4;  // 100% - 60% = 40% (оставшаяся сумма)
+  };
 
   useEffect(() => {
     setTotalIncome(calculateIncome(clients));
@@ -321,7 +324,7 @@ function ClientForm({ client, onSubmit }) {
 
             <div className="manager__income">
               <p>Общий доход: {totalIncome}</p>
-              <p>Доход по фильтрам: {filteredIncome} - 60% зал итог {filteredIncome - 60%} </p>
+              <p>Доход по фильтрам: {filteredIncome} Итог после вычитания 60%  </p>
             </div>
 
             {filteredClients.length ? (
