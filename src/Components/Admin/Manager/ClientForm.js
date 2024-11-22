@@ -277,7 +277,10 @@ const ClientForm = ({ setClients, client, onSubmit }) => {
             />
           </div>
 
-          <div className="manager__form-group">
+       
+
+        </div>
+   <div className="manager__form-group">
             <label className="manager__form-label">Комментарий:</label>
             <textarea
               name="comment"
@@ -287,9 +290,6 @@ const ClientForm = ({ setClients, client, onSubmit }) => {
               required
             />
           </div>
-
-        </div>
-
         <button className="manager__form-submit-button" type="submit">
           {client ? "Обновить" : "Добавить"} клиента
         </button>
