@@ -151,6 +151,9 @@ function ClientForm({ client, onSubmit }) {
       return acc;
     }, 0);
   };
+   const calculateIncomeAfterDeduction = () => {
+    return filteredIncome * 0.4;  // 100% - 60% = 40% (оставшаяся сумма)
+  };
 
   useEffect(() => {
     setTotalIncome(calculateIncome(clients));
@@ -244,6 +247,7 @@ function ClientForm({ client, onSubmit }) {
                 <option value="ММА">ММА</option>
                 <option value="Sambo">Самбо</option>
                 <option value="Boryba">Борьба</option>
+                <option value="греко римская борьба">греко римская борьба</option>
                 <option value="taekwondo">тхэквандо</option>
                 <option value="Judo">Дзюдо</option>
                 <option value="kickboxing">Кикбокс</option>
@@ -257,6 +261,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
@@ -318,8 +323,9 @@ function ClientForm({ client, onSubmit }) {
             </div>
 
             <div className="manager__income">
-              <p>Общий доход: {totalIncome}</p>
-              <p>Доход по фильтрам: {filteredIncome}</p>
+              <p>Общий доход: {totalIncome}сом</p>
+              <p>Доход по фильтрам: {filteredIncome}сом </p>
+              <p>Итог после вычитания 60% {calculateIncomeAfterDeduction()}сом</p>
             </div>
 
             {filteredClients.length ? (
@@ -425,6 +431,7 @@ function ClientForm({ client, onSubmit }) {
                     >
                       <option value="Все тренеры">Все тренеры</option>
                       <option value="Машрапов Тилек">Машрапов Тилек</option>
+                    <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                       <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                       <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                       <option value="Сатаров Канат">Сатаров Канат</option>
@@ -572,6 +579,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
@@ -728,6 +736,7 @@ function ClientForm({ client, onSubmit }) {
               >
                 <option value="Все тренеры">Все тренеры</option>
                 <option value="Машрапов Тилек">Машрапов Тилек</option>
+                  <option value="Минбаев Сулайман">Минбаев Сулайман</option>
                 <option value="Мойдунов Мирлан">Мойдунов Мирлан</option>
                 <option value="Асанбоев Эрлан">Асанбоев Эрлан</option>
                 <option value="Сатаров Канат">Сатаров Канат</option>
