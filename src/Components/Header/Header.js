@@ -1,37 +1,32 @@
-import React, { useState } from "react";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CiMenuKebab } from 'react-icons/ci'; // Иконка для бургера
 import Photo from "../Header/img/mlogo.png";
-import { Link } from "react-router-dom";
-import { CiMenuKebab } from "react-icons/ci";
 
 function Header() {
-  const [isOpen, setOpen] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="header">
       <div className="container">
         <div className="header__nav">
-          <img className="header__nav-logo" src={Photo} />
-          <nav className={`header__nav-menu ${isOpen ? "active" : ""}`}>
+          <img className="header__nav-logo" src={Photo} alt="Logo" />
+          <nav className={`header__nav-menu ${isOpen ? 'active' : ''}`}>
             <ul className="header__nav-list">
               <li>
-                <Link to="/" className="header__nav-list-subtitle">
-                  Главная
-                </Link>
+                <Link to="/" className="header__nav-list-subtitle">Главная</Link>
               </li>
               <li>
-                <Link to="/Виды спорта" className="header__nav-list-subtitle">
-                  Виды спорта
-                </Link>
+                <Link to="/Виды спорта" className="header__nav-list-subtitle">Виды спорта</Link>
               </li>
               <li>
-                <Link to="/Новости" className="header__nav-list-subtitle">
-                  Наш зал
-                </Link>
+                <Link to="/Новости" className="header__nav-list-subtitle">Наш зал</Link>
               </li>
             </ul>
           </nav>
           <button
             className="header__nav-button"
-            onClick={() => setOpen(!isOpen)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <CiMenuKebab />
           </button>
@@ -40,4 +35,5 @@ function Header() {
     </section>
   );
 }
+
 export default Header;

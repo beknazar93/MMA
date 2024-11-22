@@ -3,48 +3,16 @@
 //   padding: 20px;
 //   border-radius: 8px;
 
-//   &__tabs {
-//     display: flex;
-//     gap: 10px;
-//     margin-bottom: 20px;
-//   }
-
-//   &__tab {
-//     padding: 10px 15px;
-//     font-size: 14px;
-//     color: #333;
-//     background-color: #e9ecef;
-//     border: none;
-//     border-radius: 4px;
-//     cursor: pointer;
-//     transition: background-color 0.3s;
-
-//     &:hover {
-//       background-color: #ced4da;
-//     }
-
-//     &--active {
-//       background-color: #007bff;
-//       color: #fff;
-//     }
-//   }
-
-//   &__contents {
-//     padding: 15px;
-//     border: 1px solid #dee2e6;
-//     border-radius: 8px;
-//     background-color: #ffffff;
-//   }
-
+//   // Фильтры
 //   &__filters {
 //     display: flex;
 //     flex-wrap: wrap;
 //     gap: 15px;
 //     margin-bottom: 20px;
 
-//     .manager__search-input,
-//     .manager__filter {
-//       padding: 8px 10px;
+//     &-input,
+//     &-select {
+//       padding: 8px;
 //       font-size: 14px;
 //       border-radius: 4px;
 //       border: 1px solid #ced4da;
@@ -52,188 +20,283 @@
 
 //       &:focus {
 //         border-color: #007bff;
-//         outline: none;
 //       }
 //     }
 
-//     .manager__search-input {
+//     &-input {
 //       flex: 1;
 //     }
+
+//     &-select {
+//       width: 150px;
+//     }
 //   }
 
-//   &__income {
-//     font-size: 16px;
-//     color: #495057;
-//     margin-bottom: 15px;
-//   }
-
-//   &__clients-list {
+//   // Список клиентов
+//   &__client-list {
 //     display: flex;
 //     flex-direction: column;
-//     gap: 15px;
+//     gap: 10px;
+//     margin-bottom: 30px;
+//     max-height: 400px; /* Максимальная высота контейнера */
+//     overflow-y: auto; /* Вертикальная прокрутка */
+//     border: 1px solid #ccc; /* Опционально: для визуального выделения */
+//     padding: 10px; /* Отступы внутри контейнера */
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для стиля */
+//     background-color: #fff; /* Цвет фона */
+
+//     &-item {
+//       padding: 15px;
+//       border: 1px solid #ddd;
+//       border-radius: 6px;
+//       background-color: #fafafa;
+//       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+//       transition: box-shadow 0.3s ease;
+
+//       &:hover {
+//         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+//       }
+
+//       &-header {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         margin-bottom: 15px;
+
+//         &-name {
+//           font-size: 1.2em;
+//           font-weight: bold;
+//         }
+
+//         &-payment {
+//           font-size: 1em;
+//           font-weight: 600;
+//           padding: 5px 10px;
+//           border-radius: 4px;
+//           background-color: #f8d7da;
+//           color: #721c24;
+
+//           &--paid {
+//             background-color: #d4edda;
+//             color: #155724;
+//           }
+
+//           &--unpaid {
+//             background-color: #f8d7da;
+//             color: #721c24;
+//           }
+//         }
+//       }
+
+//       &-toggle-button {
+//         padding: 8px 12px;
+//         background-color: #007bff;
+//         color: white;
+//         border: none;
+//         border-radius: 4px;
+//         cursor: pointer;
+
+//         &:hover {
+//           background-color: #0056b3;
+//         }
+//       }
+
+//       &-details {
+//         margin-top: 10px;
+
+//         &-field {
+//           font-size: 14px;
+//           margin: 5px 0;
+//         }
+//       }
+//     }
 //   }
 
-//   .manager__client-card {
-//     padding: 15px;
-//     margin-bottom: 15px;
-//     border: 1px solid #ddd;
-//     border-radius: 6px;
-//     background-color: #fafafa;
-//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//     transition: box-shadow 0.3s ease-in-out;
-  
-//     &:hover {
-//       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Подсветка карточки при наведении */
-//     }
-//   }
-  
-//   .manager__client-header {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     margin-bottom: 15px;
-//   }
-  
-//   .manager__client-name {
-//     font-size: 1.2em;
-//     font-weight: bold;
-//   }
-  
-//   .manager__client-payment {
-//     font-size: 1em;
-//     font-weight: 600;
-//     padding: 5px 10px;
-//     border-radius: 4px;
-//     transition: background-color 0.3s, color 0.3s;
-  
-//     &.paid {
-//       background-color: #d4edda; /* Светлый зелёный фон */
-//       color: #155724; /* Тёмно-зелёный текст */
-//     }
-  
-//     &.unpaid {
-//       background-color: #f8d7da; /* Светлый красный фон */
-//       color: #721c24; /* Тёмно-красный текст */
-//     }
-//   }
-  
-//   .manager__toggle-details-button {
-//     padding: 8px 12px;
-//     background-color: #007bff;
-//     color: white;
-//     border: none;
-//     border-radius: 4px;
-//     cursor: pointer;
-//     font-size: 0.9em;
-//     transition: background-color 0.3s;
-  
-//     &:hover {
-//       background-color: #0056b3;
-//     }
-//   }
-  
-//   .manager__client-details {
-//     margin-top: 10px;
-//   }
-  
-//   .manager__client-phone,
-//   .manager__client-price,
-//   .manager__client-sport-category,
-//   .manager__client-trainer,
-//   .manager__client-comment,
-//   .manager__client-date {
-//     margin-top: 8px;
-//     font-size: 1em;
-//   }
-  
-
-//   .manager__add-client {
-//     max-width: 500px; // Уменьшена ширина
+//   // Форма добавления клиента
+//   &__form {
+//     max-width: 500px;
 //     margin: 0 auto;
-//     padding: 15px; // Меньше padding
-//     border-radius: 6px;
-//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Легкая тень
-//     background-color: #ffffff;
-//     background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+//     padding: 20px;  // Уменьшил отступы для компактности
+//     background-color: #f9f9f9; // Светлый фон
+//     border-radius: 12px;
+//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+//     overflow: hidden;
+  
+//     &-row {
+//       display: grid;
+//       grid-template-columns: 1fr 1fr;
+//       gap: 15px;
+//       margin-bottom: 15px;  // Уменьшил отступы между строками
+//     }
+  
+//     &-group {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 6px;  // Уменьшил расстояние между label и input/select
+  
+//       &--last {
+//         margin-bottom: 0;
+//       }
+//     }
+  
+//     &-label {
+//       font-weight: 500;
+//       font-size: 14px;  // Уменьшил размер шрифта
+//       color: #444;
+//       margin-bottom: 5px;
+//     }
+  
+//     &-input,
+//     &-select {
+//       padding: 10px 14px;  // Уменьшил padding для компактности
+//       font-size: 14px;
+//       border: 1px solid #ddd;
+//       border-radius: 8px;
+//       outline: none;
+//       transition: all 0.3s ease;
+  
+//       &:focus {
+//         border-color: #0056b3;
+//         box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+//       }
+//     }
+  
+//     &-submit-button {
+//       background-color: #007bff;
+//       color: #fff;
+//       padding: 10px 20px;  // Уменьшил padding для кнопки
+//       font-size: 16px;
+//       font-weight: 600;
+//       border: none;
+//       border-radius: 8px;
+//       cursor: pointer;
+//       transition: all 0.3s ease;
+//       width: 100%;
+//       margin-top: 20px;  // Уменьшил верхний отступ
+  
+//       &:hover {
+//         background-color: #0056b3;
+//         transform: translateY(-2px);
+//       }
+  
+//       &:active {
+//         background-color: #004085;
+//         transform: translateY(1px);
+//       }
+//     }
+  
+//     // Адаптивность
+//     @media (max-width: 768px) {
+//       max-width: 100%;
+//       padding: 20px;
+  
+//       &-row {
+//         grid-template-columns: 1fr;
+//       }
+  
+//       &-submit-button {
+//         width: 100%;
+//       }
+//     }
+  
+//     @media (max-width: 480px) {
+//       padding: 15px;
+  
+//       &-label {
+//         font-size: 14px;
+//       }
+  
+//       &-input,
+//       &-select {
+//         padding: 8px 12px;  // Уменьшил padding для мобильных
+//       }
+  
+//       &-submit-button {
+//         font-size: 14px;
+//       }
+//     }
 //   }
   
-//   .manager__form-title {
-//     font-size: 1.3em; // Меньше размер шрифта
-//     margin-bottom: 15px; // Уменьшен отступ
-//     text-align: center;
-//     color: #333;
-//     font-family: 'Arial', sans-serif;
-//   }
-  
-//   .manager__fieldset {
-//     border: 1px solid #e0e0e0;
-//     padding: 12px; // Меньше padding
-//     margin-bottom: 15px;
-//     border-radius: 5px;
-//     background-color: #fafafa;
-//   }
-  
-//   .manager__fieldset legend {
-//     font-weight: 600;
-//     font-size: 1.1em; // Немного меньше шрифт
-//     color: #007BFF;
-//   }
-  
-//   .manager__field-group {
+//   // Подсчёт дохода
+//   &__income-summary {
 //     display: flex;
-//     flex-wrap: wrap;
-//     gap: 12px; // Меньше промежутки
-//   }
-  
-//   .manager__field {
-//     flex: 1 1 calc(50% - 12px); // Уменьшены поля
-//   }
-  
-//   .manager__field--textarea {
-//     flex: 1 1 100%;
-//   }
-  
-//   .manager__input, .manager__textarea {
-//     width: 100%;
-//     padding: 8px; // Меньше отступы
-//     border-radius: 4px;
-//     border: 1px solid #ccc;
-//     margin-top: 6px; // Уменьшен отступ сверху
-//     font-size: 0.95em; // Меньше шрифт
-//     color: #555;
+//     flex-direction: column;
+//     gap: 20px;
+//     padding: 20px;
 //     background-color: #fff;
-//     transition: border-color 0.3s ease-in-out;
+//     border-radius: 8px;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+//     button {
+//       padding: 10px 20px;
+//       font-size: 16px;
+//       background-color: #007bff;
+//       color: white;
+//       border: none;
+//       border-radius: 6px;
+//       cursor: pointer;
+//       transition: background-color 0.3s ease;
+//       text-align: center;
+  
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+//     }
+  
+//     & > div {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 15px;
+//     }
+  
+//     &__total-income,
+//     &__forty-percent,
+//     &__sixty-percent {
+//       font-size: 18px;
+//       color: #333;
+//       margin: 0;
+//       padding: 5px 0;
+//     }
+  
+//     &__total-income {
+//       font-weight: 600;
+//       color: #333; // Темный цвет для общей суммы
+//     }
+  
+//     &__forty-percent,
+//     &__sixty-percent {
+//       font-weight: 500;
+//       color: #555; // Слегка светлее для выделения, но без ярких акцентов
+//     }
 //   }
   
-//   .manager__input:focus, .manager__textarea:focus {
-//     border-color: #007BFF;
-//     outline: none;
+
+//   // Общие стили
+//   &__tabs {
+//     display: flex;
+//     gap: 10px;
+//     margin-bottom: 20px;
+
+//     &-button {
+//       padding: 10px 20px;
+//       font-size: 14px;
+//       color: #333;
+//       background-color: #e9ecef;
+//       border: none;
+//       border-radius: 4px;
+//       cursor: pointer;
+//       transition: background-color 0.3s;
+
+//       &:hover {
+//         background-color: #ced4da;
+//       }
+
+//       &--active {
+//         background-color: #007bff;
+//         color: #fff;
+//       }
+//     }
 //   }
-  
-//   .manager__button {
-//     display: block;
-//     width: 100%;
-//     padding: 8px; // Меньше padding
-//     background-color: #007BFF;
-//     color: #fff;
-//     border: none;
-//     border-radius: 4px;
-//     font-size: 1em; // Меньше шрифт
-//     cursor: pointer;
-//     transition: background-color 0.3s ease-in-out, transform 0.2s ease;
-//   }
-  
-//   .manager__button:hover {
-//     background-color: #0056b3;
-//     transform: translateY(-2px);
-//   }
-  
-//   .manager__button:active {
-//     transform: translateY(0);
-//   }
-  
-  
-  
 // }
 
 .manager {
@@ -241,49 +304,16 @@
   padding: 20px;
   border-radius: 8px;
 
-  &__tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    flex-wrap: wrap; // Обеспечивает корректное поведение на мобильных устройствах
-  }
-
-  &__tab {
-    padding: 10px 15px;
-    font-size: 14px;
-    color: #333;
-    background-color: #e9ecef;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #ced4da;
-    }
-
-    &--active {
-      background-color: #007bff;
-      color: #fff;
-    }
-  }
-
-  &__contents {
-    padding: 15px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    background-color: #ffffff;
-  }
-
+  // Фильтры
   &__filters {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 20px;
 
-    .manager__search-input,
-    .manager__filter {
-      padding: 8px 10px;
+    &-input,
+    &-select {
+      padding: 8px;
       font-size: 14px;
       border-radius: 4px;
       border: 1px solid #ced4da;
@@ -291,361 +321,301 @@
 
       &:focus {
         border-color: #007bff;
-        outline: none;
       }
     }
 
-    .manager__search-input {
+    &-input {
       flex: 1;
     }
+
+    &-select {
+      width: 150px;
+    }
   }
 
-  &__income {
-    font-size: 16px;
-    color: #495057;
-    margin-bottom: 15px;
-  }
-
-  &__clients-list {
+  // Список клиентов
+  &__client-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-  }
+    gap: 10px;
+    margin-bottom: 30px;
 
-  .manager__client-card {
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #fafafa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
-  
-    &:hover {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Подсветка карточки при наведении */
-    }
-  }
-  
-  .manager__client-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .manager__client-name {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  
-  .manager__client-payment {
-    font-size: 1em;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-  
-    &.paid {
-      background-color: #d4edda; /* Светлый зелёный фон */
-      color: #155724; /* Тёмно-зелёный текст */
-    }
-  
-    &.unpaid {
-      background-color: #f8d7da; /* Светлый красный фон */
-      color: #721c24; /* Тёмно-красный текст */
-    }
-  }
-  
-  .manager__toggle-details-button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-  
-  .manager__client-details {
-    margin-top: 10px;
-  }
-  
-  .manager__client-phone,
-  .manager__client-price,
-  .manager__client-sport-category,
-  .manager__client-trainer,
-  .manager__client-comment,
-  .manager__client-date {
-    margin-top: 8px;
-    font-size: 1em;
-  }
-  
+    max-height: 400px; /* Максимальная высота контейнера */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    border: 1px solid #ccc; /* Опционально: для визуального выделения */
+    padding: 10px; /* Отступы внутри контейнера */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для стиля */
+    background-color: #fff; /* Цвет фона */
 
-  // .manager__add-client {
-  //   max-width: 500px; // Уменьшена ширина
-  //   margin: 0 auto;
-  //   padding: 15px; // Меньше padding
-  //   border-radius: 6px;
-  //   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Легкая тень
-  //   background-color: #ffffff;
-  //   background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
-  // }
-  
-  // .manager__form-title {
-  //   font-size: 1.3em; // Меньше размер шрифта
-  //   margin-bottom: 15px; // Уменьшен отступ
-  //   text-align: center;
-  //   color: #333;
-  //   font-family: 'Arial', sans-serif;
-  // }
-  
-  // .manager__fieldset {
-  //   border: 1px solid #e0e0e0;
-  //   padding: 12px; // Меньше padding
-  //   margin-bottom: 15px;
-  //   border-radius: 5px;
-  //   background-color: #fafafa;
-  // }
-  
-  // .manager__fieldset legend {
-  //   font-weight: 600;
-  //   font-size: 1.1em; // Немного меньше шрифт
-  //   color: #007BFF;
-  // }
-  
-  // .manager__field-group {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   gap: 12px; // Меньше промежутки
-  // }
-  
-  // .manager__field {
-  //   flex: 1 1 calc(50% - 12px); // Уменьшены поля
-  // }
-  
-  // .manager__field--textarea {
-  //   flex: 1 1 100%;
-  // }
-  
-  // .manager__input, .manager__textarea {
-  //   width: 100%;
-  //   padding: 8px; // Меньше отступы
-  //   border-radius: 4px;
-  //   border: 1px solid #ccc;
-  //   margin-top: 6px; // Уменьшен отступ сверху
-  //   font-size: 0.95em; // Меньше шрифт
-  //   color: #555;
-  //   background-color: #fff;
-  //   transition: border-color 0.3s ease-in-out;
-  // }
-  
-  // .manager__input:focus, .manager__textarea:focus {
-  //   border-color: #007BFF;
-  //   outline: none;
-  // }
-  
-  // .manager__button {
-  //   display: block;
-  //   width: 100%;
-  //   padding: 8px; // Меньше padding
-  //   background-color: #007BFF;
-  //   color: #fff;
-  //   border: none;
-  //   border-radius: 4px;
-  //   font-size: 1em; // Меньше шрифт
-  //   cursor: pointer;
-  //   transition: background-color 0.3s ease-in-out, transform 0.2s ease;
-  // }
-  
-  // .manager__button:hover {
-  //   background-color: #0056b3;
-  //   transform: translateY(-2px);
-  // }
-  
-  // .manager__button:active {
-  //   transform: translateY(0);
-  // }
+    &-item {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: #fafafa;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
 
-  // // Адаптивные стили для различных разрешений экранов
-
-  // @media (max-width: 1024px) {
-  //   .manager__tabs {
-  //     flex-direction: column; // Переводим вкладки в вертикальное расположение
-  //   }
-
-  //   .manager__tab {
-  //     font-size: 12px; // Уменьшаем размер шрифта на планшетах
-  //     padding: 8px 12px;
-  //   }
-
-  //   .manager__add-client {
-  //     max-width: 100%;
-  //     padding: 10px; // Уменьшаем padding
-  //   }
-
-  //   .manager__form-title {
-  //     font-size: 1.1em; // Уменьшаем размер шрифта
-  //   }
-  // }
-
-  // @media (max-width: 768px) {
-  //   .manager__tabs {
-  //     gap: 8px;
-  //   }
-
-  //   .manager__add-client {
-  //     padding: 8px; // Меньше padding на мобильных
-  //   }
-
-  //   .manager__input,
-  //   .manager__textarea {
-  //     font-size: 0.9em; // Меньше шрифт
-  //   }
-
-  //   .manager__client-card {
-  //     padding: 12px; // Уменьшаем padding в карточке клиента
-  //   }
-  // }
-
-  // @media (max-width: 576px) {
-  //   .manager__tabs {
-  //     flex-direction: column;
-  //     gap: 5px;
-  //   }
-
-  //   .manager__tab {
-  //     font-size: 11px;
-  //     padding: 6px 10px;
-  //   }
-
-  //   .manager__client-name {
-  //     font-size: 1em;
-  //   }
-
-  //   .manager__add-client {
-  //     padding: 5px; // Меньше padding на самых маленьких экранах
-  //   }
-
-  //   .manager__form-title {
-  //     font-size: 1em; // Уменьшаем размер шрифта
-  //   }
-  // }
-
-  // @media (max-width: 480px) {
-  //   .manager__add-client {
-  //     padding: 4px;
-  //   }
-
-  //   .manager__input,
-  //   .manager__textarea {
-  //     font-size: 0.85em; // Еще меньше шрифт
-  //   }
-
-  //   .manager__button {
-  //     font-size: 0.9em;
-  //     padding: 6px;
-  //   }
-  // }
-  .manager__add-client {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-  
-    h2 {
-      font-size: 24px;
-      color: #333;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px; // расстояние между колонками
-      margin-bottom: 20px;
-  
-      .form-group {
-        flex: 1 1 45%; // 45% ширины для каждого поля
-        min-width: 200px; // минимальная ширина
+      &:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
-  
-      label {
-        display: block;
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 5px;
-        text-transform: capitalize;
+
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+
+        &-name {
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+
+        &-payment {
+          font-size: 1em;
+          font-weight: 600;
+          padding: 5px 10px;
+          border-radius: 4px;
+          background-color: #f8d7da;
+          color: #721c24;
+
+          &--paid {
+            background-color: #d4edda;
+            color: #155724;
+          }
+
+          &--unpaid {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+        }
       }
-  
-      .manager__input {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ddd;
+
+      &-toggle-button {
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
         border-radius: 4px;
-        font-size: 16px;
-        transition: border-color 0.3s ease;
-  
-        &:focus {
-          border-color: #007bff;
-          outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+
+      &-details {
+        margin-top: 10px;
+
+        &-field {
+          font-size: 14px;
+          margin: 5px 0;
         }
       }
     }
-  
-    .error {
-      color: red;
-      margin-bottom: 10px;
-      font-size: 14px;
-      text-align: center;
+  }
+
+  // Форма добавления клиента
+  .manager__form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;  // Уменьшил отступы для компактности
+    background-color: #f9f9f9; // Светлый фон
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .manager__form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;  // Уменьшил отступы между строками
     }
-  
-    button {
-      width: 100%;
-      padding: 12px;
+
+    .manager__form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;  // Уменьшил расстояние между label и input/select
+
+      &--last {
+        margin-bottom: 0;
+      }
+    }
+
+    .manager__form-label {
+      font-weight: 500;
+      font-size: 14px;  // Уменьшил размер шрифта
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .manager__form-input,
+    .manager__form-select {
+      padding: 10px 14px;  // Уменьшил padding для компактности
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+      }
+    }
+
+    .manager__form-submit-button {
       background-color: #007bff;
       color: #fff;
-      border: none;
-      border-radius: 4px;
+      padding: 10px 20px;  // Уменьшил padding для кнопки
       font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 20px;  // Уменьшил верхний отступ
+
+      &:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        background-color: #004085;
+        transform: translateY(1px);
+      }
+    }
+
+    // Адаптивность
+    @media (max-width: 1024px) {
+      padding: 15px;
+      .manager__form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      padding: 20px;
+
+      .manager__form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .manager__form-submit-button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .manager__form-input,
+      .manager__form-select {
+        padding: 8px 12px;  // Уменьшил padding для мобильных
+      }
+
+      .manager__form-submit-button {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .manager__form {
+        padding: 15px;
+      }
+
+      .manager__form-label {
+        font-size: 14px;
+      }
+
+      .manager__form-input,
+      .manager__form-select {
+        padding: 8px 12px;
+      }
+
+      .manager__form-submit-button {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Подсчёт дохода
+  .manager__income-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-  
+      text-align: center;
+
       &:hover {
         background-color: #0056b3;
       }
     }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .manager__total-income,
+    .manager__forty-percent,
+    .manager__sixty-percent {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    .manager__total-income {
+      font-weight: 600;
+      color: #333; // Темный цвет для общей суммы
+    }
+
+    .manager__forty-percent,
+    .manager__sixty-percent {
+      font-weight: 500;
+      color: #555; // Слегка светлее для выделения, но без ярких акцентов
+    }
   }
-  
-  @media (max-width: 768px) {
-    .manager__add-client {
-      padding: 15px;
-    }
-  
-    .form-row {
-      flex-direction: column; // на мобильных устройствах поля будут в одну колонку
-    }
-  
-    h2 {
-      font-size: 20px;
-    }
-  
-    .manager__input {
+
+  // Общие стили
+  &__tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    &-button {
+      padding: 10px 20px;
       font-size: 14px;
-      padding: 8px;
-    }
-  
-    button {
-      padding: 10px;
+      color: #333;
+      background-color: #e9ecef;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #ced4da;
+      }
+
+      &--active {
+        background-color: #007bff;
+        color: white;
+      }
     }
   }
-  
 }

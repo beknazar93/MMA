@@ -8,8 +8,9 @@
 
     &__nav {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
 
         &-list {
             display: flex;
@@ -27,17 +28,79 @@
                 &:hover {
                     color: red;
                 }
+
                 &:nth-child(n + 2) {
                     margin-left: 20px;
                 }
             }
         }
+
         &-button {
             display: none;
         }
+
         &-logo {
             width: 8%;
         }
     }
 
+    // Адаптация для мобильных устройств
+    @media (max-width: 1024px) {
+        .header__nav {
+            justify-content: space-between;
+        }
+
+        .header__nav-list {
+            display: none;  // Скрыть обычное меню для мобильных устройств
+            width: 100%;
+            flex-direction: column;  // Сделать вертикальным для мобильных
+            gap: 10px;
+            padding-left: 0;
+
+            &-subtitle {
+                font-size: 110%;  // Уменьшаем размер шрифта для мобильных
+                margin-left: 0;
+                padding: 10px;
+            }
+        }
+
+        .header__nav-button {
+            display: block;  // Показать кнопку бургер-меню
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+
+    // Адаптация для мобильных (бургер-меню)
+    @media (max-width: 768px) {
+        .header__nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%;  // Задаем ширину для бургер-меню
+            height: 100%;
+            background-color: white;
+            border-right: 2px solid #000000;
+            z-index: 10;
+            transform: translateX(-100%);
+            visibility: hidden;
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+
+            &.active {
+                transform: translateX(0);
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .header__nav-list {
+                display: flex;
+                flex-direction: column;
+                padding-top: 10%;
+                gap: 10px;
+            }
+        }
+    }
 }
