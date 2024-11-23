@@ -277,6 +277,19 @@ const ClientForm = ({ setClients, client, onSubmit }) => {
             />
           </div>
 
+       
+
+        </div>
+   <div className="manager__form-group">
+            <label className="manager__form-label">Комментарий:</label>
+            <textarea
+              name="comment"
+              value={formData.comment}
+              onChange={handleChange}
+              className="manager__form-textarea"
+              required
+            />
+          </div>
         </div>
 
         <div className="manager__form-group">
