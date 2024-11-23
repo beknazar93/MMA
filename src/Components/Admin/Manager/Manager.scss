@@ -1,304 +1,3 @@
-// .manager {
-//   background-color: #f8f9fa;
-//   padding: 20px;
-//   border-radius: 8px;
-
-//   // Фильтры
-//   &__filters {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 15px;
-//     margin-bottom: 20px;
-
-//     &-input,
-//     &-select {
-//       padding: 8px;
-//       font-size: 14px;
-//       border-radius: 4px;
-//       border: 1px solid #ced4da;
-//       transition: border-color 0.3s;
-
-//       &:focus {
-//         border-color: #007bff;
-//       }
-//     }
-
-//     &-input {
-//       flex: 1;
-//     }
-
-//     &-select {
-//       width: 150px;
-//     }
-//   }
-
-//   // Список клиентов
-//   &__client-list {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 10px;
-//     margin-bottom: 30px;
-//     max-height: 400px; /* Максимальная высота контейнера */
-//     overflow-y: auto; /* Вертикальная прокрутка */
-//     border: 1px solid #ccc; /* Опционально: для визуального выделения */
-//     padding: 10px; /* Отступы внутри контейнера */
-//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для стиля */
-//     background-color: #fff; /* Цвет фона */
-
-//     &-item {
-//       padding: 15px;
-//       border: 1px solid #ddd;
-//       border-radius: 6px;
-//       background-color: #fafafa;
-//       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//       transition: box-shadow 0.3s ease;
-
-//       &:hover {
-//         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-//       }
-
-//       &-header {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//         margin-bottom: 15px;
-
-//         &-name {
-//           font-size: 1.2em;
-//           font-weight: bold;
-//         }
-
-//         &-payment {
-//           font-size: 1em;
-//           font-weight: 600;
-//           padding: 5px 10px;
-//           border-radius: 4px;
-//           background-color: #f8d7da;
-//           color: #721c24;
-
-//           &--paid {
-//             background-color: #d4edda;
-//             color: #155724;
-//           }
-
-//           &--unpaid {
-//             background-color: #f8d7da;
-//             color: #721c24;
-//           }
-//         }
-//       }
-
-//       &-toggle-button {
-//         padding: 8px 12px;
-//         background-color: #007bff;
-//         color: white;
-//         border: none;
-//         border-radius: 4px;
-//         cursor: pointer;
-
-//         &:hover {
-//           background-color: #0056b3;
-//         }
-//       }
-
-//       &-details {
-//         margin-top: 10px;
-
-//         &-field {
-//           font-size: 14px;
-//           margin: 5px 0;
-//         }
-//       }
-//     }
-//   }
-
-//   // Форма добавления клиента
-//   &__form {
-//     max-width: 500px;
-//     margin: 0 auto;
-//     padding: 20px;  // Уменьшил отступы для компактности
-//     background-color: #f9f9f9; // Светлый фон
-//     border-radius: 12px;
-//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-//     overflow: hidden;
-  
-//     &-row {
-//       display: grid;
-//       grid-template-columns: 1fr 1fr;
-//       gap: 15px;
-//       margin-bottom: 15px;  // Уменьшил отступы между строками
-//     }
-  
-//     &-group {
-//       display: flex;
-//       flex-direction: column;
-//       gap: 6px;  // Уменьшил расстояние между label и input/select
-  
-//       &--last {
-//         margin-bottom: 0;
-//       }
-//     }
-  
-//     &-label {
-//       font-weight: 500;
-//       font-size: 14px;  // Уменьшил размер шрифта
-//       color: #444;
-//       margin-bottom: 5px;
-//     }
-  
-//     &-input,
-//     &-select {
-//       padding: 10px 14px;  // Уменьшил padding для компактности
-//       font-size: 14px;
-//       border: 1px solid #ddd;
-//       border-radius: 8px;
-//       outline: none;
-//       transition: all 0.3s ease;
-  
-//       &:focus {
-//         border-color: #0056b3;
-//         box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
-//       }
-//     }
-  
-//     &-submit-button {
-//       background-color: #007bff;
-//       color: #fff;
-//       padding: 10px 20px;  // Уменьшил padding для кнопки
-//       font-size: 16px;
-//       font-weight: 600;
-//       border: none;
-//       border-radius: 8px;
-//       cursor: pointer;
-//       transition: all 0.3s ease;
-//       width: 100%;
-//       margin-top: 20px;  // Уменьшил верхний отступ
-  
-//       &:hover {
-//         background-color: #0056b3;
-//         transform: translateY(-2px);
-//       }
-  
-//       &:active {
-//         background-color: #004085;
-//         transform: translateY(1px);
-//       }
-//     }
-  
-//     // Адаптивность
-//     @media (max-width: 768px) {
-//       max-width: 100%;
-//       padding: 20px;
-  
-//       &-row {
-//         grid-template-columns: 1fr;
-//       }
-  
-//       &-submit-button {
-//         width: 100%;
-//       }
-//     }
-  
-//     @media (max-width: 480px) {
-//       padding: 15px;
-  
-//       &-label {
-//         font-size: 14px;
-//       }
-  
-//       &-input,
-//       &-select {
-//         padding: 8px 12px;  // Уменьшил padding для мобильных
-//       }
-  
-//       &-submit-button {
-//         font-size: 14px;
-//       }
-//     }
-//   }
-  
-//   // Подсчёт дохода
-//   &__income-summary {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 20px;
-//     padding: 20px;
-//     background-color: #fff;
-//     border-radius: 8px;
-//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
-//     button {
-//       padding: 10px 20px;
-//       font-size: 16px;
-//       background-color: #007bff;
-//       color: white;
-//       border: none;
-//       border-radius: 6px;
-//       cursor: pointer;
-//       transition: background-color 0.3s ease;
-//       text-align: center;
-  
-//       &:hover {
-//         background-color: #0056b3;
-//       }
-//     }
-  
-//     & > div {
-//       display: flex;
-//       flex-direction: column;
-//       gap: 15px;
-//     }
-  
-//     &__total-income,
-//     &__forty-percent,
-//     &__sixty-percent {
-//       font-size: 18px;
-//       color: #333;
-//       margin: 0;
-//       padding: 5px 0;
-//     }
-  
-//     &__total-income {
-//       font-weight: 600;
-//       color: #333; // Темный цвет для общей суммы
-//     }
-  
-//     &__forty-percent,
-//     &__sixty-percent {
-//       font-weight: 500;
-//       color: #555; // Слегка светлее для выделения, но без ярких акцентов
-//     }
-//   }
-  
-
-//   // Общие стили
-//   &__tabs {
-//     display: flex;
-//     gap: 10px;
-//     margin-bottom: 20px;
-
-//     &-button {
-//       padding: 10px 20px;
-//       font-size: 14px;
-//       color: #333;
-//       background-color: #e9ecef;
-//       border: none;
-//       border-radius: 4px;
-//       cursor: pointer;
-//       transition: background-color 0.3s;
-
-//       &:hover {
-//         background-color: #ced4da;
-//       }
-
-//       &--active {
-//         background-color: #007bff;
-//         color: #fff;
-//       }
-//     }
-//   }
-// }
-
 .manager {
   background-color: #f8f9fa;
   padding: 20px;
@@ -318,6 +17,7 @@
       border-radius: 4px;
       border: 1px solid #ced4da;
       transition: border-color 0.3s;
+      outline: none;
 
       &:focus {
         border-color: #007bff;
@@ -326,10 +26,14 @@
 
     &-input {
       flex: 1;
+      
     }
 
     &-select {
       width: 150px;
+    }
+    &-search{
+      outline: none;
     }
   }
 
@@ -461,6 +165,12 @@
         border-color: #0056b3;
         box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
       }
+    }
+
+    .manager__form-textarea{
+      height: 60px;
+      resize: none;
+      outline: none;
     }
 
     .manager__form-submit-button {
