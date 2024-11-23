@@ -327,14 +327,13 @@
 
     &-input {
       flex: 1;
-
+      
     }
 
     &-select {
       width: 150px;
     }
-
-    &-search {
+    &-search{
       outline: none;
     }
   }
@@ -346,18 +345,12 @@
     gap: 10px;
     margin-bottom: 30px;
 
-    max-height: 400px;
-    /* Максимальная высота контейнера */
-    overflow-y: auto;
-    /* Вертикальная прокрутка */
-    border: 1px solid #ccc;
-    /* Опционально: для визуального выделения */
-    padding: 10px;
-    /* Отступы внутри контейнера */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Небольшая тень для стиля */
-    background-color: #fff;
-    /* Цвет фона */
+    max-height: 400px; /* Максимальная высота контейнера */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    border: 1px solid #ccc; /* Опционально: для визуального выделения */
+    padding: 10px; /* Отступы внутри контейнера */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для стиля */
+    background-color: #fff; /* Цвет фона */
 
     &-item {
       padding: 15px;
@@ -430,7 +423,7 @@
   .manager__form {
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px; // Уменьшил отступы для компактности
+    padding: 20px;  // Уменьшил отступы для компактности
     background-color: #f9f9f9; // Светлый фон
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -440,13 +433,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 15px;
-      margin-bottom: 15px; // Уменьшил отступы между строками
+      margin-bottom: 15px;  // Уменьшил отступы между строками
     }
 
     .manager__form-group {
       display: flex;
       flex-direction: column;
-      gap: 6px; // Уменьшил расстояние между label и input/select
+      gap: 6px;  // Уменьшил расстояние между label и input/select
 
       &--last {
         margin-bottom: 0;
@@ -455,14 +448,14 @@
 
     .manager__form-label {
       font-weight: 500;
-      font-size: 14px; // Уменьшил размер шрифта
+      font-size: 14px;  // Уменьшил размер шрифта
       color: #444;
       margin-bottom: 5px;
     }
 
     .manager__form-input,
     .manager__form-select {
-      padding: 10px 14px; // Уменьшил padding для компактности
+      padding: 10px 14px;  // Уменьшил padding для компактности
       font-size: 14px;
       border: 1px solid #ddd;
       border-radius: 8px;
@@ -475,7 +468,7 @@
       }
     }
 
-    .manager__form-textarea {
+    .manager__form-textarea{
       height: 60px;
       resize: none;
       outline: none;
@@ -484,7 +477,7 @@
     .manager__form-submit-button {
       background-color: #007bff;
       color: #fff;
-      padding: 10px 20px; // Уменьшил padding для кнопки
+      padding: 10px 20px;  // Уменьшил padding для кнопки
       font-size: 16px;
       font-weight: 600;
       border: none;
@@ -492,7 +485,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       width: 100%;
-      margin-top: 20px; // Уменьшил верхний отступ
+      margin-top: 20px;  // Уменьшил верхний отступ
 
       &:hover {
         background-color: #0056b3;
@@ -508,7 +501,6 @@
     // Адаптивность
     @media (max-width: 1024px) {
       padding: 15px;
-
       .manager__form-row {
         grid-template-columns: 1fr;
       }
@@ -528,10 +520,9 @@
     }
 
     @media (max-width: 576px) {
-
       .manager__form-input,
       .manager__form-select {
-        padding: 8px 12px; // Уменьшил padding для мобильных
+        padding: 8px 12px;  // Уменьшил padding для мобильных
       }
 
       .manager__form-submit-button {
@@ -585,7 +576,6 @@
       }
     }
 
-    &>div {
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -638,11 +628,4 @@
       }
     }
   }
-}
-
-.manager__form-textarea {
-  width: 80%;
-  height: 40px;
-  resize: none;
-  margin: 0 auto;
 }
