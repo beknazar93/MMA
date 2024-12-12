@@ -22,7 +22,7 @@ function App() {
   
   return (
     <div className="App">
-    <script src="//code.jivo.ru/widget/HRaSNpRj2I" async></script>
+
       <BrowserRouter>
         <Header />
         <hr />
