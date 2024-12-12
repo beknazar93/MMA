@@ -19,8 +19,10 @@ import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
 import ManagerApp from "./Components/Admin/Manager/ManagerApp";
 
 function App() {
+  
   return (
     <div className="App">
+    <script src="//code.jivo.ru/widget/HRaSNpRj2I" async></script>
       <BrowserRouter>
         <Header />
         <hr />
