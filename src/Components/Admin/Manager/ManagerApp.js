@@ -5,7 +5,7 @@ import ClientList from "./ClientList";
 import ClientForm from "./ClientForm";
 import IncomeSummary from "./IncomeSummary";
 
-const API_URL = "TestOsh.pythonanywhere.com/api/clients/";
+const API_URL = "TestOsh.pythonanywhere.com/api/clients";
 
 const ManagerApp = () => {
   const [clients, setClients] = useState([]);
